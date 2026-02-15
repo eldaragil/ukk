@@ -93,10 +93,6 @@ public class pengaduan extends javax.swing.JFrame {
        
     
     try {
-        //membuat statement pemanggilan data pada table surat_masuk dari database 
-//        String sql = "select * from pengaduan";
-//        pst = conn.prepareStatement(sql);
-//        rs = pst.executeQuery();
         String sql = "SELECT * FROM pengaduan WHERE nik = ?";
         pst = conn.prepareStatement(sql);
         pst.setString(1, session.getNik());
@@ -141,13 +137,9 @@ public class pengaduan extends javax.swing.JFrame {
    
    void bersih() {
      //  txt_pengaduan.setText("");
-       txt_nik.setText("");
        txt_nama.setText("");
        txt_isi.setText("");
        lokasi.setText("");
-       
-       // HAPUS TANGGAL
-       // jd_tglpengaduan.setDate(null);
        
         // HAPUS FOTO
        lbl_foto.setIcon(null);
@@ -472,56 +464,54 @@ public class pengaduan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void filtterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtterActionPerformed
-   if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
-    JOptionPane.showMessageDialog(this, "Silakan pilih rentang tanggal!");
-    return;
-}
+        if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
+         JOptionPane.showMessageDialog(this, "Silakan pilih rentang tanggal!");
+         return; }
 
-DefaultTableModel modelBaru = new DefaultTableModel();
+        DefaultTableModel modelBaru = new DefaultTableModel();
+        modelBaru.addColumn("ID Pengaduan");
+        modelBaru.addColumn("NIK");
+        modelBaru.addColumn("Nama");
+        modelBaru.addColumn("Tanggal");
+        modelBaru.addColumn("Isi Laporan");
+        modelBaru.addColumn("Foto");
+        modelBaru.addColumn("Kategori");
+        modelBaru.addColumn("Lokasi");
+        modelBaru.addColumn("Status");
 
-modelBaru.addColumn("ID Pengaduan");
-modelBaru.addColumn("NIK");
-modelBaru.addColumn("Nama");
-modelBaru.addColumn("Tanggal");
-modelBaru.addColumn("Isi Laporan");
-modelBaru.addColumn("Foto");
-modelBaru.addColumn("Kategori");
-modelBaru.addColumn("Lokasi");
-modelBaru.addColumn("Status");
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String dari = sdf.format(jDateChooser1.getDate());
+            String sampai = sdf.format(jDateChooser2.getDate());
 
-try {
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    String dari = sdf.format(jDateChooser1.getDate());
-    String sampai = sdf.format(jDateChooser2.getDate());
+            String sql = "SELECT * FROM pengaduan WHERE tgl_pengaduan BETWEEN ? AND ? AND nik=? ORDER BY tgl_pengaduan ASC";
 
-    String sql = "SELECT * FROM pengaduan WHERE tgl_pengaduan BETWEEN ? AND ? AND nik=? ORDER BY tgl_pengaduan ASC";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, dari);
+            pst.setString(2, sampai);
+            pst.setString(3, session.getNik());
 
-    PreparedStatement pst = conn.prepareStatement(sql);
-    pst.setString(1, dari);
-    pst.setString(2, sampai);
-    pst.setString(3, session.getNik());
+            ResultSet rs = pst.executeQuery();
 
-    ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                modelBaru.addRow(new Object[]{
+                    rs.getString("id_pengaduan"),
+                    rs.getString("nik"),
+                    rs.getString("nama"),
+                    rs.getString("tgl_pengaduan"),
+                    rs.getString("isi_laporan"),
+                    rs.getString("foto"),
+                    rs.getString("Kategori"),
+                    rs.getString("lokasi"),
+                    rs.getString("status")
+                });
+            }
 
-    while (rs.next()) {
-        modelBaru.addRow(new Object[]{
-            rs.getString("id_pengaduan"),
-            rs.getString("nik"),
-            rs.getString("nama"),
-            rs.getString("tgl_pengaduan"),
-            rs.getString("isi_laporan"),
-            rs.getString("foto"),
-            rs.getString("Kategori"),
-            rs.getString("lokasi"),
-            rs.getString("status")
-        });
-    }
+            jTable1.setModel(modelBaru);
 
-    jTable1.setModel(modelBaru);
-
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(this, "Gagal filter: " + e.getMessage());
-}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal filter: " + e.getMessage());
+        }
 
          // TODO add your handling code here:
     }//GEN-LAST:event_filtterActionPerformed
@@ -611,26 +601,7 @@ try {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//        String tampilan="yyyy-MM-dd";
-//        SimpleDateFormat fm = new SimpleDateFormat(tampilan);
-//        String tanggal=String.valueOf(fm.format(jd_tglpengaduan.getDate()));
-//        try {
-//            String id_pengaduan = txt_pengaduan.getText();
-//            String nik = txt_nik.getText();
-//            String tgl = tanggal;
-//            String isi = txt_isi.getText();
-//           // String status = txt_status.getText();
-//
-//            String sql = "UPDATE pengaduan set id_pengaduan='" + id_pengaduan + "', tgl_pengaduan='" + tgl + "', isi_laporan='" + isi +  "'";
-//            pst = conn.prepareStatement(sql);
-//            pst.execute();
-//            JOptionPane.showMessageDialog(null, "UPDATE SUKSES");
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//        getData();
-//        bersih();
-         String tampilan = "yyyy-MM-dd";
+        String tampilan = "yyyy-MM-dd";
         SimpleDateFormat fm = new SimpleDateFormat(tampilan);
         String tanggal = fm.format(jd_tglpengaduan.getDate());
 
@@ -693,97 +664,94 @@ try {
 
     private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
  // Membuat model tabel baru (wadah untuk menampung data hasil query)
-DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
 
-// Menambahkan nama kolom pada tabel
-model.addColumn("No");                // Nomor urut
-model.addColumn("ID Pengaduan");      // ID pengaduan
-model.addColumn("NIK");               // NIK pelapor
-model.addColumn("Nama");              // Nama pelapor
-model.addColumn("Tanggal");           // Tanggal pengaduan
-model.addColumn("Isi Laporan");       // Isi laporan
-model.addColumn("Foto");              // Foto bukti
-model.addColumn("Kategori");          // Kategori (Sarana/Prasarana)
-model.addColumn("Lokasi");            // Lokasi kejadian
-model.addColumn("Status");            // Status pengaduan
+        // Menambahkan nama kolom pada tabel
+        model.addColumn("No");                // Nomor urut
+        model.addColumn("ID Pengaduan");      // ID pengaduan
+        model.addColumn("NIK");               // NIK pelapor
+        model.addColumn("Nama");              // Nama pelapor
+        model.addColumn("Tanggal");           // Tanggal pengaduan
+        model.addColumn("Isi Laporan");       // Isi laporan
+        model.addColumn("Foto");              // Foto bukti
+        model.addColumn("Kategori");          // Kategori (Sarana/Prasarana)
+        model.addColumn("Lokasi");            // Lokasi kejadian
+        model.addColumn("Status");            // Status pengaduan
 
-try {
+        try {
 
-    // Mengambil teks dari field pencarian dan menghapus spasi berlebih
-    String cari = txt_cari.getText().trim();
+            // Mengambil teks dari field pencarian dan menghapus spasi berlebih
+            String cari = txt_cari.getText().trim();
 
-    // Mengambil pilihan kategori dari combobox
-    String kategori = cmb_kategori.getSelectedItem().toString();
+            // Mengambil pilihan kategori dari combobox
+            String kategori = cmb_kategori.getSelectedItem().toString();
 
-    // Query dasar (1=1 supaya mudah ditambahkan kondisi AND)
-    String sql = "SELECT * FROM pengaduan WHERE 1=1";
+            // Query dasar (1=1 supaya mudah ditambahkan kondisi AND)
+            String sql = "SELECT * FROM pengaduan WHERE 1=1";
 
-    // Jika kolom pencarian tidak kosong, tambahkan filter nama
-    if (!cari.equals("")) {
-        sql += " AND nama LIKE ?";
-    }
+            // Jika kolom pencarian tidak kosong, tambahkan filter nama
+            if (!cari.equals("")) {
+                sql += " AND nama LIKE ?";
+            }
 
-    // Jika kategori bukan "Semua", tambahkan filter kategori
-    if (!kategori.equals("Semua")) {
-        sql += " AND Kategori = ?";
-    }
+            // Jika kategori bukan "Semua", tambahkan filter kategori
+            if (!kategori.equals("Semua")) {
+                sql += " AND Kategori = ?";
+            }
 
-    // Mengurutkan data berdasarkan tanggal terbaru
-    sql += " ORDER BY tgl_pengaduan DESC";
+            // Mengurutkan data berdasarkan tanggal terbaru
+            sql += " ORDER BY tgl_pengaduan DESC";
 
-    // Menyiapkan prepared statement
-    PreparedStatement pst = conn.prepareStatement(sql);
+            // Menyiapkan prepared statement
+            PreparedStatement pst = conn.prepareStatement(sql);
 
-    int index = 1; // Untuk mengatur urutan tanda ? pada query
+            int index = 1; // Untuk mengatur urutan tanda ? pada query
 
-    // Jika ada pencarian nama, isi parameter pertama
-    if (!cari.equals("")) {
-        pst.setString(index++, "%" + cari + "%"); 
-        // % digunakan agar bisa mencari sebagian kata
-    }
+            // Jika ada pencarian nama, isi parameter pertama
+            if (!cari.equals("")) {
+                pst.setString(index++, "%" + cari + "%"); 
+                // % digunakan agar bisa mencari sebagian kata
+            }
 
-    // Jika ada filter kategori, isi parameter berikutnya
-    if (!kategori.equals("Semua")) {
-        pst.setString(index++, kategori);
-    }
+            // Jika ada filter kategori, isi parameter berikutnya
+            if (!kategori.equals("Semua")) {
+                pst.setString(index++, kategori);
+            }
 
-    // Menjalankan query
-    ResultSet res = pst.executeQuery();
+            // Menjalankan query
+            ResultSet res = pst.executeQuery();
 
-    int no = 1; // Nomor urut tabel
+            int no = 1; // Nomor urut tabel
 
-    // Perulangan untuk mengambil semua data dari hasil query
-    while (res.next()) {
+            // Perulangan untuk mengambil semua data dari hasil query
+            while (res.next()) {
 
-        // Menambahkan setiap baris data ke dalam tabel
-        model.addRow(new Object[]{
-            no++,                                   // Nomor urut otomatis
-            res.getString("id_pengaduan"),           // Ambil data id_pengaduan
-            res.getString("nik"),                    // Ambil data nik
-            res.getString("nama"),                   // Ambil data nama
-            res.getString("tgl_pengaduan"),          // Ambil tanggal
-            res.getString("isi_laporan"),            // Ambil isi laporan
-            res.getString("foto"),                   // Ambil foto
-            res.getString("Kategori"),               // Ambil kategori
-            res.getString("lokasi"),                 // Ambil lokasi
-            res.getString("status")                  // Ambil status
-        });
-    }
+                // Menambahkan setiap baris data ke dalam tabel
+                model.addRow(new Object[]{
+                    no++,                                   // Nomor urut otomatis
+                    res.getString("id_pengaduan"),           // Ambil data id_pengaduan
+                    res.getString("nik"),                    // Ambil data nik
+                    res.getString("nama"),                   // Ambil data nama
+                    res.getString("tgl_pengaduan"),          // Ambil tanggal
+                    res.getString("isi_laporan"),            // Ambil isi laporan
+                    res.getString("foto"),                   // Ambil foto
+                    res.getString("Kategori"),               // Ambil kategori
+                    res.getString("lokasi"),                 // Ambil lokasi
+                    res.getString("status")                  // Ambil status
+                });
+            }
 
-    // Menampilkan model ke JTable
-    jTable1.setModel(model);
+            // Menampilkan model ke JTable
+            jTable1.setModel(model);
 
-    // Menampilkan total data yang ditemukan
-    lbl_total.setText("TOTAL HASIL: " + model.getRowCount() + " Data");
+            // Menampilkan total data yang ditemukan
+            lbl_total.setText("TOTAL HASIL: " + model.getRowCount() + " Data");
 
-} catch (Exception e) {
+        } catch (Exception e) {
 
-    // Menampilkan error di console (agar tidak mengganggu auto-search)
-    System.out.println("Error search: " + e.getMessage());
-}
-
-
-
+            // Menampilkan error di console (agar tidak mengganggu auto-search)
+            System.out.println("Error search: " + e.getMessage());
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cariKeyReleased
 

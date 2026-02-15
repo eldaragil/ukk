@@ -187,6 +187,7 @@
         </Container>
         <Component class="javax.swing.JTextField" name="txt_cari_nama">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cari_namaActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cari_namaKeyReleased"/>
           </Events>
         </Component>
