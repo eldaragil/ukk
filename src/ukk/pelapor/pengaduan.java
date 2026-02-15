@@ -187,10 +187,9 @@ public class pengaduan extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        filtter = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        cmb_cari = new javax.swing.JComboBox<>();
         lbl_foto = new javax.swing.JLabel();
         btn_upload = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -198,8 +197,21 @@ public class pengaduan extends javax.swing.JFrame {
         kategori = new javax.swing.JComboBox<>();
         txt_pengaduan = new javax.swing.JTextField();
         lokasi = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmb_kategori = new javax.swing.JComboBox<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_cari = new javax.swing.JTextField();
+        lbl_total = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("PENGADUAN");
@@ -225,6 +237,7 @@ public class pengaduan extends javax.swing.JFrame {
         txt_isi.setBorder(null);
         jPanel1.add(txt_isi, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 210, 50));
 
+        jButton8.setText("cek");
         jButton8.setBorder(null);
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -238,6 +251,7 @@ public class pengaduan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 50, 20));
 
+        jButton1.setText("save");
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +260,7 @@ public class pengaduan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 50, 20));
 
+        jButton3.setText("refresh");
         jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +269,7 @@ public class pengaduan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 50, 20));
 
+        jButton7.setText("exit");
         jButton7.setBorder(null);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,14 +278,16 @@ public class pengaduan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 50, 20));
 
-        jButton6.setBorder(null);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        filtter.setText("filter");
+        filtter.setBorder(null);
+        filtter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                filtterActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 60, 20));
+        jPanel1.add(filtter, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, 60, 20));
 
+        jButton4.setText("delete");
         jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,6 +296,7 @@ public class pengaduan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 50, 20));
 
+        jButton2.setText("update");
         jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,15 +304,6 @@ public class pengaduan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 50, 20));
-
-        cmb_cari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nama", "Tanggal" }));
-        cmb_cari.setBorder(null);
-        cmb_cari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_cariActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cmb_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 90, -1));
 
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 100, 130));
@@ -324,7 +334,7 @@ public class pengaduan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 500, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 500, 290));
 
         kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sarana", "Prasarana" }));
         jPanel1.add(kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 210, 30));
@@ -339,14 +349,60 @@ public class pengaduan extends javax.swing.JFrame {
         jPanel1.add(txt_pengaduan, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 210, -1));
         jPanel1.add(lokasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 210, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sarana", "Prasarana" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sarana", "Prasarana" }));
+        cmb_kategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmb_kategoriActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 110, 20));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 130, -1));
+        jPanel1.add(cmb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 110, 20));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 130, -1));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 120, -1));
+
+        jLabel1.setText("Sampai");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, -1, -1));
+
+        jLabel2.setText("Dari");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
+
+        txt_cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cariActionPerformed(evt);
+            }
+        });
+        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cariKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 340, -1));
+
+        lbl_total.setText("TOTAL:");
+        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, -1, -1));
+
+        jLabel3.setText("id");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        jLabel4.setText("nik/nisn");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
+        jLabel5.setText("nama");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jLabel6.setText("tgl_pengaduan");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
+
+        jLabel7.setText("kategori");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        jLabel8.setText("lokasi");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+
+        jLabel9.setText("isi laporan");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+
+        jLabel10.setText("foto");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -393,10 +449,6 @@ public class pengaduan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void cmb_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cariActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_cariActionPerformed
-
     private void txt_namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_namaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_namaActionPerformed
@@ -419,40 +471,60 @@ public class pengaduan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8MouseClicked
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-//        String sql = "";
-//            
-//         model.getDataVector().removeAllElements();
-//         model.fireTableDataChanged();
-//         try {
-//              if (cmb_cari.getSelectedIndex() == 0) {
-//                    sql = "SELECT * FROM pengaduan where id_pengaduan like '%" + txt_cari.getText() + "%' ";
-//                    
-//               }
-//              if (cmb_cari.getSelectedIndex() == 1) {
-//                    sql = "SELECT * FROM pengaduan where nik like '%" + txt_cari.getText() + "%' ";
-//               }
-//                
-//              pst = conn.prepareStatement(sql);
-//              rs = pst.executeQuery();
-//                
-//              while (rs.next()) {
-//                  Object[] obj = new Object[5];
-//                  obj[0] = rs.getString("id_pengaduan");
-//                  obj[1] = rs.getString("nik");
-//                  obj[2] = rs.getString("tgl_pengaduan");
-//                  obj[3] = rs.getString("isi_laporan");
-//                 // obj[4] = rs.getString("status");
-//                    
-//                    
-//                  model.addRow(obj);
-//                }
-//              
-//     } catch (Exception e) {
-//          JOptionPane.showMessageDialog(null, e);
-//        } 
+    private void filtterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtterActionPerformed
+   if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
+    JOptionPane.showMessageDialog(this, "Silakan pilih rentang tanggal!");
+    return;
+}
+
+DefaultTableModel modelBaru = new DefaultTableModel();
+
+modelBaru.addColumn("ID Pengaduan");
+modelBaru.addColumn("NIK");
+modelBaru.addColumn("Nama");
+modelBaru.addColumn("Tanggal");
+modelBaru.addColumn("Isi Laporan");
+modelBaru.addColumn("Foto");
+modelBaru.addColumn("Kategori");
+modelBaru.addColumn("Lokasi");
+modelBaru.addColumn("Status");
+
+try {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    String dari = sdf.format(jDateChooser1.getDate());
+    String sampai = sdf.format(jDateChooser2.getDate());
+
+    String sql = "SELECT * FROM pengaduan WHERE tgl_pengaduan BETWEEN ? AND ? AND nik=? ORDER BY tgl_pengaduan ASC";
+
+    PreparedStatement pst = conn.prepareStatement(sql);
+    pst.setString(1, dari);
+    pst.setString(2, sampai);
+    pst.setString(3, session.getNik());
+
+    ResultSet rs = pst.executeQuery();
+
+    while (rs.next()) {
+        modelBaru.addRow(new Object[]{
+            rs.getString("id_pengaduan"),
+            rs.getString("nik"),
+            rs.getString("nama"),
+            rs.getString("tgl_pengaduan"),
+            rs.getString("isi_laporan"),
+            rs.getString("foto"),
+            rs.getString("Kategori"),
+            rs.getString("lokasi"),
+            rs.getString("status")
+        });
+    }
+
+    jTable1.setModel(modelBaru);
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Gagal filter: " + e.getMessage());
+}
+
          // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_filtterActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -611,9 +683,109 @@ public class pengaduan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_pengaduanActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmb_kategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_kategoriActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmb_kategoriActionPerformed
+
+    private void txt_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cariActionPerformed
+
+    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
+ // Membuat model tabel baru (wadah untuk menampung data hasil query)
+DefaultTableModel model = new DefaultTableModel();
+
+// Menambahkan nama kolom pada tabel
+model.addColumn("No");                // Nomor urut
+model.addColumn("ID Pengaduan");      // ID pengaduan
+model.addColumn("NIK");               // NIK pelapor
+model.addColumn("Nama");              // Nama pelapor
+model.addColumn("Tanggal");           // Tanggal pengaduan
+model.addColumn("Isi Laporan");       // Isi laporan
+model.addColumn("Foto");              // Foto bukti
+model.addColumn("Kategori");          // Kategori (Sarana/Prasarana)
+model.addColumn("Lokasi");            // Lokasi kejadian
+model.addColumn("Status");            // Status pengaduan
+
+try {
+
+    // Mengambil teks dari field pencarian dan menghapus spasi berlebih
+    String cari = txt_cari.getText().trim();
+
+    // Mengambil pilihan kategori dari combobox
+    String kategori = cmb_kategori.getSelectedItem().toString();
+
+    // Query dasar (1=1 supaya mudah ditambahkan kondisi AND)
+    String sql = "SELECT * FROM pengaduan WHERE 1=1";
+
+    // Jika kolom pencarian tidak kosong, tambahkan filter nama
+    if (!cari.equals("")) {
+        sql += " AND nama LIKE ?";
+    }
+
+    // Jika kategori bukan "Semua", tambahkan filter kategori
+    if (!kategori.equals("Semua")) {
+        sql += " AND Kategori = ?";
+    }
+
+    // Mengurutkan data berdasarkan tanggal terbaru
+    sql += " ORDER BY tgl_pengaduan DESC";
+
+    // Menyiapkan prepared statement
+    PreparedStatement pst = conn.prepareStatement(sql);
+
+    int index = 1; // Untuk mengatur urutan tanda ? pada query
+
+    // Jika ada pencarian nama, isi parameter pertama
+    if (!cari.equals("")) {
+        pst.setString(index++, "%" + cari + "%"); 
+        // % digunakan agar bisa mencari sebagian kata
+    }
+
+    // Jika ada filter kategori, isi parameter berikutnya
+    if (!kategori.equals("Semua")) {
+        pst.setString(index++, kategori);
+    }
+
+    // Menjalankan query
+    ResultSet res = pst.executeQuery();
+
+    int no = 1; // Nomor urut tabel
+
+    // Perulangan untuk mengambil semua data dari hasil query
+    while (res.next()) {
+
+        // Menambahkan setiap baris data ke dalam tabel
+        model.addRow(new Object[]{
+            no++,                                   // Nomor urut otomatis
+            res.getString("id_pengaduan"),           // Ambil data id_pengaduan
+            res.getString("nik"),                    // Ambil data nik
+            res.getString("nama"),                   // Ambil data nama
+            res.getString("tgl_pengaduan"),          // Ambil tanggal
+            res.getString("isi_laporan"),            // Ambil isi laporan
+            res.getString("foto"),                   // Ambil foto
+            res.getString("Kategori"),               // Ambil kategori
+            res.getString("lokasi"),                 // Ambil lokasi
+            res.getString("status")                  // Ambil status
+        });
+    }
+
+    // Menampilkan model ke JTable
+    jTable1.setModel(model);
+
+    // Menampilkan total data yang ditemukan
+    lbl_total.setText("TOTAL HASIL: " + model.getRowCount() + " Data");
+
+} catch (Exception e) {
+
+    // Menampilkan error di console (agar tidak mengganggu auto-search)
+    System.out.println("Error search: " + e.getMessage());
+}
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cariKeyReleased
 
     /**
      * @param args the command line arguments
@@ -655,23 +827,35 @@ public class pengaduan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_upload;
-    private javax.swing.JComboBox<String> cmb_cari;
+    private javax.swing.JComboBox<String> cmb_kategori;
+    private javax.swing.JButton filtter;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private com.toedter.calendar.JDateChooser jd_tglpengaduan;
     private javax.swing.JComboBox<String> kategori;
     private javax.swing.JLabel lbl_foto;
+    private javax.swing.JLabel lbl_total;
     private javax.swing.JTextField lokasi;
+    private javax.swing.JTextField txt_cari;
     private javax.swing.JTextArea txt_isi;
     private javax.swing.JTextField txt_nama;
     private javax.swing.JTextField txt_nik;
