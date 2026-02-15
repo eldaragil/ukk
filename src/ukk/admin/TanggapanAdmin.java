@@ -640,65 +640,68 @@ public class TanggapanAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                                     
+ // 1. Validasi Input: Pastikan ID dan Tanggapan (feedback) tidak kosong
+// 1. Validasi Input Tetap Sama
+if (txt_id.getText().isEmpty() || txt_NIK.getText().isEmpty() || 
+    txt_nama.getText().isEmpty() || txt_pengaduan.getText().isEmpty() || 
+    txt_tanggapan.getText().isEmpty()) {
+    
+    JOptionPane.showMessageDialog(null, "Semua kolom wajib diisi!");
+    return;
+}
 
-    if (txt_id.getText().isEmpty() ||
-        txt_NIK.getText().isEmpty() ||
-        txt_nama.getText().isEmpty() ||
-        txt_pengaduan.getText().isEmpty() ||
-        txt_tanggapan.getText().isEmpty()) {
+try {
+    String format = "yyyy-MM-dd";
+    SimpleDateFormat fm = new SimpleDateFormat(format);
 
-        JOptionPane.showMessageDialog(null, "Semua kolom wajib diisi!");
-        return;
-    }
+    String tanggalPengaduan = fm.format(txt_tgl.getDate());
+    String tanggalTanggapan = fm.format(txt_tglpengaduan.getDate());
+    
+    // Ambil status dari ComboBox
+    String statusTerpilih = cmb_status.getSelectedItem().toString();
 
-    try {
+    Connection conn = k.KoneksiDB();
 
-        String format = "yyyy-MM-dd";
-        SimpleDateFormat fm = new SimpleDateFormat(format);
+    // --- BAGIAN 1: INSERT KE TABEL TANGGAPAN (RIWAYAT) ---
+    String sqlSimpan = "INSERT INTO tanggapan "
+            + "(id_pengaduan, nik, nama, tanggal, tgl_tang, "
+            + "isi_pengaduan, kategori, lokasi, status, feedback, foto) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        String tanggalPengaduan = fm.format(txt_tgl.getDate());
-        String tanggalTanggapan = fm.format(txt_tglpengaduan.getDate());
+    PreparedStatement pst = conn.prepareStatement(sqlSimpan);
+    pst.setString(1, txt_id.getText());
+    pst.setString(2, txt_NIK.getText());
+    pst.setString(3, txt_nama.getText());
+    pst.setString(4, tanggalPengaduan);
+    pst.setString(5, tanggalTanggapan);
+    pst.setString(6, txt_pengaduan.getText());
+    pst.setString(7, cb_kategori.getSelectedItem().toString());
+    pst.setString(8, lokasi.getText());
+    pst.setString(9, statusTerpilih);
+    pst.setString(10, txt_tanggapan.getText());
+    pst.setString(11, (pathFoto == null) ? "" : pathFoto);
 
-        Connection conn = k.KoneksiDB();
+    pst.executeUpdate();
 
-        String sql = "INSERT INTO tanggapan "
-                + "(id_pengaduan, nik, nama, tanggal, tgl_tang, "
-                + "isi_pengaduan, kategori, lokasi, status, feedback, foto) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // --- BAGIAN 2: UPDATE OTOMATIS STATUS DI TABEL PENGADUAN ---
+    // Logika: Jika admin memilih status "Selesai" atau "Tertanggapi", 
+    // maka tabel sumber (pengaduan) juga harus update statusnya.
+    
+    String sqlUpdateStatus = "UPDATE pengaduan SET status = ? WHERE id_pengaduan = ?";
+    PreparedStatement pstUpdate = conn.prepareStatement(sqlUpdateStatus);
+    pstUpdate.setString(1, statusTerpilih);
+    pstUpdate.setString(2, txt_id.getText()); // Menggunakan ID yang sama
+    pstUpdate.executeUpdate();
 
-        PreparedStatement pst = conn.prepareStatement(sql);
+    JOptionPane.showMessageDialog(null, "Tanggapan berhasil disimpan dan status diperbarui!");
 
-        pst.setString(1, txt_id.getText());
-        pst.setString(2, txt_NIK.getText());
-        pst.setString(3, txt_nama.getText());
-        pst.setString(4, tanggalPengaduan);
-        pst.setString(5, tanggalTanggapan);
-        pst.setString(6, txt_pengaduan.getText());
-        pst.setString(7, cb_kategori.getSelectedItem().toString());
-        pst.setString(8, lokasi.getText());
-        pst.setString(9, cmb_status.getSelectedItem().toString());
-        pst.setString(10, txt_tanggapan.getText());
+    tampil_tabel();
+    bersih();
 
-        // kalau foto kosong jangan kirim null
-        if (pathFoto == null) {
-            pst.setString(11, "");
-        } else {
-            pst.setString(11, pathFoto);
-        }
-
-        pst.executeUpdate();
-
-        JOptionPane.showMessageDialog(null, "Tanggapan berhasil disimpan!");
-
-        tampil_tabel();
-        bersih();
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        e.printStackTrace();
-    }
-
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    e.printStackTrace();
+}
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
