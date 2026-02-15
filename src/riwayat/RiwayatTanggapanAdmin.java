@@ -11,6 +11,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import ukk.menu.menuAdmin;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import java.io.File;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import Koneksi.Koneksi;
@@ -38,7 +42,6 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,6 +55,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,13 +63,6 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("RIWAYAT PENGADUAN");
-
-        jButton1.setText("Cari");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         tabel_pengaduan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,6 +120,13 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
 
         jLabel4.setText("Priview Data");
 
+        jButton2.setText("cari");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,18 +150,15 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton6))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(593, 593, 593)
@@ -178,9 +179,9 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
                         .addComponent(jButton6)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4)
+                        .addComponent(jButton2)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,46 +228,66 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-                                      
-    dispose(); // Menutup form riwayat saja
-    // Atau ke dashboard: new Dashboard().setVisible(true); this.dispose();
+                                        
+    // 1. Tampilkan dialog konfirmasi
+    int confirm = JOptionPane.showConfirmDialog(this, 
+            "Apakah Anda yakin ingin kembali ke Menu Utama?", 
+            "Konfirmasi Keluar", 
+            JOptionPane.YES_NO_OPTION, 
+            JOptionPane.QUESTION_MESSAGE);
+
+    // 2. Jika user pilih 'Yes' (Ya)
+    if (confirm == JOptionPane.YES_OPTION) {
+        try {
+            // Panggil Menu Admin (Pastikan nama class-nya benar)
+            // Jika MenuAdmin ada di package lain, NetBeans akan minta Import otomatis
+            new ukk.menu.menuAdmin().setVisible(true); 
+            
+            // Tutup form riwayat yang sekarang
+            this.dispose(); 
+        } catch (Exception e) {
+            // Jaga-jaga kalau ada error saat pindah form
+            JOptionPane.showMessageDialog(this, "Gagal kembali ke menu: " + e.getMessage());
+        }
+    }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void tabel_pengaduanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pengaduanMouseClicked
-                                             
+                                            
     int baris = tabel_pengaduan.getSelectedRow();
     if (baris == -1) return;
 
     try {
-        // Kita hanya mengambil data FOTO untuk ditampilkan di Preview (jLabel8)
-        // Pastikan angka 7 adalah urutan kolom foto di database kamu
+        // 1. Mengambil data FOTO dari kolom ke-7 (Sesuaikan urutan kolom database kamu)
         Object dataFoto = tabel_pengaduan.getValueAt(baris, 7);
         String foto = (dataFoto != null) ? dataFoto.toString() : "";
 
         if (!foto.equals("")) {
-            File file = new File(foto);
+            // 2. Tentukan lokasi file (Pastikan folder foto sudah benar)
+            File file = new File("src/img_laporan/" + foto); 
+            
             if (file.exists()) {
                 ImageIcon icon = new ImageIcon(file.getAbsolutePath());
-                // Mengatur ukuran gambar agar pas dengan kotak jLabel8
+                // 3. Mengatur ukuran gambar agar pas dengan kotak jLabel8 (Preview)
                 Image img = icon.getImage().getScaledInstance(
                         jLabel8.getWidth(), 
                         jLabel8.getHeight(), 
                         Image.SCALE_SMOOTH);
                 jLabel8.setIcon(new ImageIcon(img));
+                jLabel8.setText(""); // Menghapus teks jika gambar ditemukan
             } else {
-                jLabel8.setIcon(null); // Jika file foto tidak ditemukan di folder
+                jLabel8.setIcon(null); 
+                jLabel8.setText("File Tidak Ditemukan");
             }
         } else {
-            jLabel8.setIcon(null); // Jika di database tidak ada nama fotonya
+            jLabel8.setIcon(null);
+            jLabel8.setText("Tidak Ada Foto");
         }
     } catch (Exception e) {
         System.out.println("Error preview foto: " + e.getMessage());
+        jLabel8.setText("Error Load");
     }
 
         // TODO add your handling code here:
@@ -278,6 +299,19 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                                        
+    System.out.println("Tombol diklik!"); // Ini untuk ngetes di panel Output bawah
+    
+    if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "Harap pilih kedua tanggal filter!");
+    } else {
+        cariData(); 
+    }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,7 +350,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -364,21 +398,23 @@ private void tampilData() {
 private void cariData() {
     model.setRowCount(0);
     try {
-        // Ambil tanggal dari JDateChooser
         java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        
+        // Ambil nilai tanggal
         String tglDari = df.format(jDateChooser1.getDate());
         String tglSampai = df.format(jDateChooser2.getDate());
 
-        // Memanggil Package Koneksi -> Class Koneksi -> Method KoneksiDB
-// Memanggil Package Koneksi -> Class Koneksi -> Method KoneksiDB
         Connection conn = Koneksi.KoneksiDB();
-        String sql = "SELECT * FROM pengaduan WHERE tgl_pengaduan BETWEEN ? AND ?";
+        String sql = "SELECT * FROM pengaduan WHERE DATE(tgl_pengaduan) BETWEEN ? AND ?";
+        
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1, tglDari);
         pst.setString(2, tglSampai);
         ResultSet rs = pst.executeQuery();
         
+        boolean dataDitemukan = false;
         while (rs.next()) {
+            dataDitemukan = true;
             Object[] obj = {
                 rs.getString("id_pengaduan"),
                 rs.getString("nik"),
@@ -391,8 +427,14 @@ private void cariData() {
             };
             model.addRow(obj);
         }
+        
+        if (!dataDitemukan) {
+            JOptionPane.showMessageDialog(this, "Data tidak ditemukan pada rentang tanggal tersebut.");
+        }
+        
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Pilih tanggal filter dulu! " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error Filter: " + e.getMessage());
+        e.printStackTrace(); // Agar error muncul di panel output NetBeans
     }
 }
 }

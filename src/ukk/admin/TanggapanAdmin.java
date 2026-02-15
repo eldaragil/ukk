@@ -18,6 +18,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import ukk.menu.menuAdmin;
+import java.sql.Connection;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.util.Date;
@@ -623,6 +628,35 @@ public class TanggapanAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb_statusActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                                         
+    int baris = tabel_pengaduan.getSelectedRow();
+    if (baris == -1) {
+        JOptionPane.showMessageDialog(this, "Pilih data di tabel yang ingin dicetak!");
+        return;
+    }
+
+    // Ambil ID dari kolom ke-0 (id_pengaduan)
+    String idTerpilih = tabel_pengaduan.getValueAt(baris, 0).toString();
+
+    try {
+        // 1. Lokasi file report (.jasper)
+        String reportPath = "src/ukk/ReportUKK/laporan_pengaduan.jasper";
+        
+        // 2. Menyiapkan Parameter
+        HashMap<String, Object> parameters = new HashMap<>();
+        parameters.put("id_pengaduan", idTerpilih); // Nama parameter harus sama dengan di Jasper
+
+        // 3. Koneksi Database (Gunakan class koneksi kamu)
+        Connection conn = k.KoneksiDB(); 
+
+        // 4. Proses Cetak
+        JasperPrint jp = JasperFillManager.fillReport(reportPath, parameters, conn);
+        JasperViewer.viewReport(jp, false); // 'false' agar aplikasi utama tidak tertutup saat report disilang
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Gagal mencetak: " + e.getMessage());
+    }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
