@@ -118,6 +118,11 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_riwayat);
 
+        txt_cari_nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cari_namaActionPerformed(evt);
+            }
+        });
         txt_cari_nama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_cari_namaKeyReleased(evt);
@@ -480,6 +485,10 @@ try {
     }
 
     }//GEN-LAST:event_txt_cari_namaKeyReleased
+
+    private void txt_cari_namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cari_namaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cari_namaActionPerformed
 
     /**
      * @param args the command line arguments
