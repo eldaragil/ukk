@@ -24,11 +24,10 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
 
     public RiwayatTanggapanAdmin() {
         initComponents();
-        // Sesuai desainmu: ID, NIK, Nama, Tgl, Kategori, Laporan, Status, Foto
-        String[] judul = {"ID", "NIK", "Nama", "Tanggal", "Kategori", "Isi Laporan", "Status", "Foto"};
-        model = new DefaultTableModel(judul, 0);
-        tabel_pengaduan.setModel(model); 
-        tampilData();
+    String[] judul = {"ID", "NIK", "Nama", "Tanggal", "Kategori", "Isi Laporan", "Status", "Feedback", "Foto"};
+    model = new DefaultTableModel(judul, 0);
+    tabel_pengaduan.setModel(model); 
+    tampilData();
     }
 
     /**
@@ -372,10 +371,13 @@ private void tampilData() {
     model.setRowCount(0);
     try {
         Connection conn = Koneksi.KoneksiDB(); 
-        // Mengambil semua data. Kalau mau cuma yang selesai: SELECT * FROM pengaduan WHERE status='Selesai'
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM pengaduan");
+        // Menggunakan LEFT JOIN agar feedback admin terbawa
+        String sql = "SELECT p.*, t.feedback FROM pengaduan p " +
+                     "LEFT JOIN tanggapan t ON p.id_pengaduan = t.id_pengaduan";
+        ResultSet rs = conn.createStatement().executeQuery(sql);
         
         while (rs.next()) {
+            String fb = rs.getString("feedback");
             String[] data = {
                 rs.getString("id_pengaduan"),
                 rs.getString("nik"),
@@ -384,7 +386,9 @@ private void tampilData() {
                 rs.getString("kategori"),
                 rs.getString("isi_laporan"),
                 rs.getString("status"),
-                rs.getString("foto") // Index ke-7 untuk preview
+                // Jika feedback admin kosong, tampilkan pesan default
+                (fb == null || fb.isEmpty()) ? "Belum ditanggapi" : fb, 
+                rs.getString("foto") 
             };
             model.addRow(data);
         }

@@ -6,6 +6,8 @@
 package ukk.menu;
 
 
+import riwayat.RiwayatAspirasi;
+import riwayat.RiwayatTanggapanAdmin;
 import riwayat.datapengaduan;
 import ukk.admin.Aspirasi1;
 import ukk.login_register.login;
@@ -41,13 +43,13 @@ public class menuAdmin extends javax.swing.JFrame {
         C = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -55,7 +57,6 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 720, 360, 50));
 
-        jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +65,6 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 720, 360, 50));
 
-        C.setBackground(new java.awt.Color(0,0,0,0));
         C.setBorder(null);
         C.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +73,6 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 720, 360, 50));
 
-        jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -81,7 +80,6 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 850, 150, 60));
 
-        jButton4.setBackground(new java.awt.Color(0,0,0,0));
         jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,8 +88,21 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 720, 360, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ukk/menu/menu admin (1).png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1080));
+        jButton5.setText("Riwayat Tanggapan");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 790, 280, 60));
+
+        jButton6.setText("Riwayat Aspirasi");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 790, 300, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,6 +157,22 @@ public class menuAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        RiwayatTanggapanAdmin RiwayatTanggapanAdmin = new RiwayatTanggapanAdmin();
+        RiwayatTanggapanAdmin.setVisible(true);
+        this.setVisible(false); 
+        this.dispose(); 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        RiwayatAspirasi RiwayatAspirasi = new RiwayatAspirasi();
+        RiwayatAspirasi.setVisible(true);
+        this.setVisible(false); 
+        this.dispose(); 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,7 +214,8 @@ public class menuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

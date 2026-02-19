@@ -3,40 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/waka/verivikasiwaka.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/ReportUKK/laporan_pengaduan.jrxml</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/Koneksi/Koneksi.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/admin/TanggapanAdmin.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/admin/registrasiWaka.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/riwayat/RiwayatWaka1.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/login_register/register.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/riwayat/RiwayatTanggapanAdmin.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/riwayat/RiwayatAspirasi.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/pelapor/pengaduan.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/login_register/login.java</file>
-            <file>file:/C:/Users/ASUS/ukk-baru/src/ukk/admin/Aspirasi1.java</file>
-=======
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/register.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/admin/Aspirasi1.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/pelapor/Aspirasi_peng.java</file>
-            <file>file:/D:/buiza/ukk/src/Koneksi/Koneksi.java</file>
-            <file>file:/D:/buiza/ukk/src/riwayat/RiwayatAspirasi.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/session.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/Login.png</file>
-            <file>file:/D:/buiza/ukk/src/ukk/menu/menuWaka.java</file>
-            <file>file:/D:/buiza/ukk/src/riwayat/RiwayatWaka1.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/tugas.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/admin/TanggapanAdmin.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/admin/registrasiWaka.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/waka/verivikasiwaka.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/pelapor/pengaduan.java</file>
-            <file>file:/D:/buiza/ukk/src/riwayat/datapengaduan.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/menu/menuPelapor.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/Register.png</file>
-            <file>file:/D:/buiza/ukk/src/ukk/menu/menuAdmin.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/login.java</file>
->>>>>>> Stashed changes
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/login_register/register.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/pelapor/pengaduan.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/login_register/loginpelapor.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/riwayat/RiwayatWaka1.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/menu/menu%20waka%20(1).png</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/login_register/login.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/menu/menuWaka.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/menu/menuPelapor.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/riwayat/RiwayatAspirasi.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/riwayat/datapengaduan.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/menu/menuAdmin.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/menu/menu%20admin%20(1).png</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/admin/TanggapanAdmin.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/ukk/admin/registrasiWaka.java</file>
+            <file>file:/C:/Users/asus/Documents/ukk-baru/src/riwayat/RiwayatTanggapanAdmin.java</file>
         </group>
     </open-files>
 </project-private>
