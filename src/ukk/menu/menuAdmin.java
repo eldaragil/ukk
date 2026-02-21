@@ -14,6 +14,7 @@ import ukk.login_register.login;
 import ukk.admin.registrasiWaka;
 import ukk.admin.registrasiWaka;
 import ukk.admin.TanggapanAdmin;
+import ukk.login_register.loginpelapor;
 
 /**
  *
@@ -43,8 +44,6 @@ public class menuAdmin extends javax.swing.JFrame {
         C = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,22 +87,6 @@ public class menuAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 720, 360, 50));
 
-        jButton5.setText("Riwayat Tanggapan");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 790, 280, 60));
-
-        jButton6.setText("Riwayat Aspirasi");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 790, 300, 50));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,8 +125,8 @@ public class menuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_CActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      login login = new login();
-        login.setVisible(true);
+        loginpelapor loginpelapor = new loginpelapor();
+        loginpelapor.setVisible(true);
         this.setVisible(false); 
         this.dispose(); 
         // TODO add your handling code here:
@@ -156,22 +139,6 @@ public class menuAdmin extends javax.swing.JFrame {
         this.dispose(); 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        RiwayatTanggapanAdmin RiwayatTanggapanAdmin = new RiwayatTanggapanAdmin();
-        RiwayatTanggapanAdmin.setVisible(true);
-        this.setVisible(false); 
-        this.dispose(); 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        RiwayatAspirasi RiwayatAspirasi = new RiwayatAspirasi();
-        RiwayatAspirasi.setVisible(true);
-        this.setVisible(false); 
-        this.dispose(); 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,8 +181,6 @@ public class menuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

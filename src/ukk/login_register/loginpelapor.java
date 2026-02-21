@@ -62,7 +62,7 @@ Connection conn = null;
                 usernameTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 470, 60));
+        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 610, 60));
 
         passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
         passwordTxt.setBorder(null);
@@ -120,7 +120,7 @@ Connection conn = null;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String sql = "SELECT username, role FROM petugas WHERE username=? AND password=?";
+       String sql = "SELECT username, role FROM petugas WHERE username=? AND password=?";
 
 if (usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()) {
     JOptionPane.showMessageDialog(null, "Silahkan isi username dan password");
@@ -133,18 +133,13 @@ if (usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()) {
         rs = pst.executeQuery();
 
         if (rs.next()) {
-
             String roleDB = rs.getString("role");
 
             if (roleDB.equalsIgnoreCase("admin")) {
-
-                // LANGSUNG BUKA MENU ADMIN (tanpa session)
+                // Langsung buka menu tanpa menyimpan data session apapun
                 new menuAdmin().setVisible(true);
-
             } else if (roleDB.equalsIgnoreCase("waka")) {
-
                 new menuWaka().setVisible(true);
-
             } else {
                 JOptionPane.showMessageDialog(null, "Role tidak dikenali!");
                 return;

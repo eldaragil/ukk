@@ -36,6 +36,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.table.TableModel;
 
+
 /**
  *
  * @author asus
@@ -46,7 +47,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     Koneksi k = new Koneksi();
-    String pathFoto = null;
+    String pathFoto = "";
     /**
      * Creates new form TanggapanAdmin
      */
@@ -62,25 +63,37 @@ public class TanggapanAdmin extends javax.swing.JFrame {
     }
     
    public void getDataTanggapan() {
-        DefaultTableModel model = (DefaultTableModel) tabel_feedback.getModel();
-        model.setRowCount(0);
-        try {
-        String sql = "SELECT id_tanggapan, nik, nama, tgl_tang, feedback, status FROM tanggapan";
+    DefaultTableModel model = (DefaultTableModel) tabel_feedback.getModel();
+    model.setRowCount(0);
+    try {
+        // Ganti INNER JOIN menjadi LEFT JOIN agar data tanggapan tidak hilang
+        String sql = "SELECT t.*, p.username FROM tanggapan t "
+           + "LEFT JOIN petugas p ON t.id_petugas = p.id_petugas "
+           + "ORDER BY t.id_tanggapan DESC"; // Menampilkan data terbaru di atas
+        
         pst = conn.prepareStatement(sql);
         rs = pst.executeQuery();
+        
         while (rs.next()) {
-        model.addRow(new Object[]{
-        rs.getString("id_tanggapan"),
-        rs.getString("nik"),
-        rs.getString("nama"),
-        rs.getString("tgl_tang"),
-        rs.getString("feedback"),
-        rs.getString("status")
-        });
+            // Ambil username, jika null (tidak ketemu) ganti dengan "-"
+            String namaPetugas = rs.getString("username");
+            if (namaPetugas == null) {
+                namaPetugas = "-";
+            }
+
+            model.addRow(new Object[]{
+                rs.getString("id_tanggapan"),
+                rs.getString("nik"),
+                rs.getString("nama"),
+                rs.getString("tgl_tang"),
+                rs.getString("feedback"),
+                rs.getString("status"),
+                namaPetugas // Kolom nama petugas dari hasil JOIN
+            });
         }
-        } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Tabel bawah gagal dimuat: " + e.getMessage());
-        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal memuat tabel bawah: " + e.getMessage());
+    }
     }
     
     private void setTanggalHariIni() {
@@ -113,10 +126,14 @@ public class TanggapanAdmin extends javax.swing.JFrame {
     txt_id.setText("");
     txt_NIK.setText("");
     txt_nama.setText("");
+    txt_id_petugas.setText("");
+    txt_nama_petugas.setText("");
+    lokasi.setText("");
     txt_pengaduan.setText("");
     txt_tanggapan.setText("");
     cmb_status.setSelectedIndex(0);
     txt_tgl.setDate(null); 
+    lbl_foto.setIcon(null);
 //    lbl_foto.setIcon(null);
   //  lbl_foto.setText(""); 
 }
@@ -160,7 +177,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabel_feedback = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
+        lbl_foto = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txt_tglpengaduan = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
@@ -168,6 +185,11 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         lokasi = new javax.swing.JTextField();
+        txt_id_petugas = new javax.swing.JTextField();
+        btn_cek_petugas = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        txt_nama_petugas = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -326,7 +348,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tabel_feedback);
 
-        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel10.setText("Tanggal tanggapan");
 
@@ -344,6 +366,19 @@ public class TanggapanAdmin extends javax.swing.JFrame {
             }
         });
 
+        btn_cek_petugas.setText("Cek");
+        btn_cek_petugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cek_petugasActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("ID Petugas");
+
+        txt_nama_petugas.setEnabled(false);
+
+        jLabel15.setText("Nama Petugas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -355,26 +390,21 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel3)
-                                                    .addComponent(jLabel4)
-                                                    .addComponent(jLabel9)
-                                                    .addComponent(jLabel5))
-                                                .addGap(13, 13, 13))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel7)
-                                                    .addComponent(jLabel12)
-                                                    .addComponent(jLabel13)
-                                                    .addComponent(jLabel6)
-                                                    .addComponent(jLabel2)
-                                                    .addComponent(jLabel11))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel11))
+                                        .addGap(13, 13, 13)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                                             .addComponent(cmb_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -383,14 +413,22 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                                             .addComponent(txt_id)
                                             .addComponent(txt_NIK)
                                             .addComponent(jScrollPane2)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lokasi)
                                             .addComponent(cb_kategori, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel10)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txt_tglpengaduan, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel15)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel14))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_nama_petugas)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txt_id_petugas)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btn_cek_petugas))
+                                            .addComponent(txt_tglpengaduan, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))))
                                 .addGap(27, 27, 27))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -402,7 +440,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -414,7 +452,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_refrest))
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,7 +471,12 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -449,27 +492,27 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                                 .addComponent(txt_tgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5))
                         .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(txt_tglpengaduan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel7)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_tglpengaduan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cb_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(txt_id_petugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_cek_petugas)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_nama_petugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
                         .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lokasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))
@@ -485,8 +528,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                                 .addComponent(jLabel11))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
+                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -707,67 +749,66 @@ public class TanggapanAdmin extends javax.swing.JFrame {
  // 1. Validasi Input: Pastikan ID dan Tanggapan (feedback) tidak kosong
 // 1. Validasi Input Tetap Sama
 if (txt_id.getText().isEmpty() || txt_NIK.getText().isEmpty() || 
-    txt_nama.getText().isEmpty() || txt_pengaduan.getText().isEmpty() || 
-    txt_tanggapan.getText().isEmpty()) {
-    
-    JOptionPane.showMessageDialog(null, "Semua kolom wajib diisi!");
-    return;
-}
+        txt_nama.getText().isEmpty() || txt_pengaduan.getText().isEmpty() || 
+        txt_tanggapan.getText().isEmpty() || txt_id_petugas.getText().isEmpty()) {
+        
+        JOptionPane.showMessageDialog(null, "Semua kolom termasuk ID Petugas wajib diisi!");
+        return;
+    }
 
-try {
-    String format = "yyyy-MM-dd";
-    SimpleDateFormat fm = new SimpleDateFormat(format);
+    try {
+        // 2. PENGATURAN TANGGAL: Mengambil data dari JDateChooser
+        String format = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(format);
+        String tanggalPengaduan = fm.format(txt_tgl.getDate());
+        String tanggalTanggapan = fm.format(txt_tglpengaduan.getDate());
+        
+        // 3. AMBIL DATA DARI KOMPONEN GUI
+        String statusTerpilih = cmb_status.getSelectedItem().toString();
+        Connection conn = k.KoneksiDB();
 
-    String tanggalPengaduan = fm.format(txt_tgl.getDate());
-    String tanggalTanggapan = fm.format(txt_tglpengaduan.getDate());
-    
-    // Ambil status dari ComboBox
-    String statusTerpilih = cmb_status.getSelectedItem().toString();
+        // 4. BAGIAN 1: SIMPAN KE TABEL TANGGAPAN (DATABASE ukk_net)
+        String sqlSimpan = "INSERT INTO tanggapan "
+                + "(id_pengaduan, nik, nama, tanggal, tgl_tang, "
+                + "isi_pengaduan, kategori, lokasi, status, feedback, foto, id_petugas) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    Connection conn = k.KoneksiDB();
+        PreparedStatement pst = conn.prepareStatement(sqlSimpan);
+        pst.setString(1, txt_id.getText());
+        pst.setString(2, txt_NIK.getText());
+        pst.setString(3, txt_nama.getText());
+        pst.setString(4, tanggalPengaduan);
+        pst.setString(5, tanggalTanggapan);
+        pst.setString(6, txt_pengaduan.getText());
+        pst.setString(7, cb_kategori.getSelectedItem().toString());
+        pst.setString(8, lokasi.getText());
+        pst.setString(9, statusTerpilih);
+        pst.setString(10, txt_tanggapan.getText());
+        pst.setString(11, (pathFoto == null) ? "" : pathFoto);
+        
+        // Menggunakan setString agar tidak error tipe data saat mengambil dari JTextField
+        pst.setString(12, txt_id_petugas.getText()); 
 
-    // --- BAGIAN 1: INSERT KE TABEL TANGGAPAN (RIWAYAT) ---
-    String sqlSimpan = "INSERT INTO tanggapan "
-            + "(id_pengaduan, nik, nama, tanggal, tgl_tang, "
-            + "isi_pengaduan, kategori, lokasi, status, feedback, foto, id_petugas) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        pst.executeUpdate(); // Eksekusi simpan pertama
 
-    PreparedStatement pst = conn.prepareStatement(sqlSimpan);
-    pst.setString(1, txt_id.getText());
-    pst.setString(2, txt_NIK.getText());
-    pst.setString(3, txt_nama.getText());
-    pst.setString(4, tanggalPengaduan);
-    pst.setString(5, tanggalTanggapan);
-    pst.setString(6, txt_pengaduan.getText());
-    pst.setString(7, cb_kategori.getSelectedItem().toString());
-    pst.setString(8, lokasi.getText());
-    pst.setString(9, statusTerpilih);
-    pst.setString(10, txt_tanggapan.getText());
-    pst.setString(11, (pathFoto == null) ? "" : pathFoto);
-    pst.setInt(12, 1);
+        // 5. BAGIAN 2: UPDATE OTOMATIS STATUS DI TABEL PENGADUAN
+        String sqlUpdateStatus = "UPDATE pengaduan SET status = ? WHERE id_pengaduan = ?";
+        PreparedStatement pstUpdate = conn.prepareStatement(sqlUpdateStatus);
+        pstUpdate.setString(1, statusTerpilih);
+        pstUpdate.setString(2, txt_id.getText()); 
+        pstUpdate.executeUpdate(); // Eksekusi update kedua
 
-    pst.executeUpdate();
+        // 6. BAGIAN 3: PENYELESAIAN DAN REFRESH DATA
+        JOptionPane.showMessageDialog(null, "Tanggapan berhasil disimpan dan status diperbarui!");
 
-    // --- BAGIAN 2: UPDATE OTOMATIS STATUS DI TABEL PENGADUAN ---
-    // Logika: Jika admin memilih status "Selesai" atau "Tertanggapi", 
-    // maka tabel sumber (pengaduan) juga harus update statusnya.
-    
-    String sqlUpdateStatus = "UPDATE pengaduan SET status = ? WHERE id_pengaduan = ?";
-    PreparedStatement pstUpdate = conn.prepareStatement(sqlUpdateStatus);
-    pstUpdate.setString(1, statusTerpilih);
-    pstUpdate.setString(2, txt_id.getText()); // Menggunakan ID yang sama
-    pstUpdate.executeUpdate();
+        tampil_tabel();       // Refresh tabel daftar pengaduan (atas)
+        getDataTanggapan();   // Refresh tabel riwayat tanggapan (bawah)
+        bersih();             // Kosongkan form input agar siap dipakai lagi
 
-    JOptionPane.showMessageDialog(null, "Tanggapan berhasil disimpan dan status diperbarui!");
-
-    tampil_tabel();
-    getDataTanggapan();
-    bersih();
-
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-    e.printStackTrace();
-}
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error Simpan: " + e.getMessage());
+        e.printStackTrace();
+    }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -828,7 +869,7 @@ try {
     }//GEN-LAST:event_btn_cariActionPerformed
 
     private void tabel_pengaduanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pengaduanMouseClicked
-                                            
+    tabel_feedback.clearSelection();                                            
     int baris = tabel_pengaduan.getSelectedRow();
     if (baris == -1) return;
 
@@ -855,6 +896,8 @@ try {
 
         // ================= FOTO =================
         String foto = tabel_pengaduan.getValueAt(baris, 7).toString();
+        
+        this.pathFoto = foto;
 
         if (foto != null && !foto.equals("")) {
 
@@ -863,17 +906,17 @@ try {
             if (file.exists()) {
                 ImageIcon icon = new ImageIcon(file.getAbsolutePath());
                 Image img = icon.getImage().getScaledInstance(
-                        jLabel8.getWidth(),
-                        jLabel8.getHeight(),
+                        lbl_foto.getWidth(),
+                        lbl_foto.getHeight(),
                         Image.SCALE_SMOOTH);
 
-                jLabel8.setIcon(new ImageIcon(img));
+                lbl_foto.setIcon(new ImageIcon(img));
             } else {
-                jLabel8.setIcon(null);
+                lbl_foto.setIcon(null);
             }
 
         } else {
-            jLabel8.setIcon(null);
+            lbl_foto.setIcon(null);
         }
 
     } catch (Exception e) {
@@ -885,7 +928,9 @@ try {
 
     private void btn_refrestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrestActionPerformed
     txt_cari.setText(""); 
-    tampil_tabel(); 
+    tampil_tabel();
+    txt_id_petugas.setText("");
+    getDataTanggapan();
     bersih();   
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_refrestActionPerformed
@@ -921,70 +966,116 @@ try {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void detailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailActionPerformed
-        int row = tabel_pengaduan.getSelectedRow();
+    int rowAtas = tabel_pengaduan.getSelectedRow();
+    int rowBawah = tabel_feedback.getSelectedRow();
 
-    if (row == -1) {
-        JOptionPane.showMessageDialog(this, "Pilih data terlebih dahulu!");
+    if (rowAtas == -1 && rowBawah == -1) {
+        JOptionPane.showMessageDialog(this, "Pilih data dari salah satu tabel terlebih dahulu!");
         return;
     }
 
-    String id = tabel_pengaduan.getValueAt(row, 0).toString();
-    String nik = tabel_pengaduan.getValueAt(row, 1).toString();
-    String nama = tabel_pengaduan.getValueAt(row, 2).toString();
-    String tanggal = tabel_pengaduan.getValueAt(row, 3).toString();
-    String isi = tabel_pengaduan.getValueAt(row, 4).toString();
-    String kategori = tabel_pengaduan.getValueAt(row, 5).toString();
-    String fotoPath = tabel_pengaduan.getValueAt(row, 6).toString();
-    String status = tabel_pengaduan.getValueAt(row, 7).toString();
-
-    // PANEL UTAMA
-    JPanel panel = new JPanel(new BorderLayout(10, 10));
-
-    // ================= TEKS =================
-    JTextArea txt = new JTextArea(
-        "ID       : " + id + "\n" +
-        "NIK/NISN : " + nik + "\n" +
-        "Nama     : " + nama + "\n" +
-        "Tanggal  : " + tanggal + "\n" +
-        "Kategori : " + kategori + "\n" +
-        "Status   : " + status + "\n\n" +
-        "Isi Pengaduan:\n" + isi
-    );
-    txt.setEditable(false);
-    txt.setLineWrap(true);
-    txt.setWrapStyleWord(true);
-
-    JScrollPane scrollText = new JScrollPane(txt);
-    scrollText.setPreferredSize(new Dimension(300, 200));
-
-    // ================= GAMBAR =================
-    JLabel lblFoto = new JLabel();
-    lblFoto.setHorizontalAlignment(JLabel.CENTER);
-    lblFoto.setPreferredSize(new Dimension(200, 250));
+    // Inisialisasi variabel
+    String id="", nik="", nama="", tgl="", isi="", kat="", lok="", foto="", stat="", feedback="", petugas="";
+    String teksTampilan = "";
 
     try {
-        ImageIcon icon = new ImageIcon(fotoPath);
-        Image img = icon.getImage().getScaledInstance(
-                200, 250, Image.SCALE_SMOOTH);
-        lblFoto.setIcon(new ImageIcon(img));
+        java.sql.Connection conn = Koneksi.KoneksiDB(); //
+
+        if (rowAtas != -1) {
+            // --- TABEL ATAS (PENGADUAN) ---
+            id   = tabel_pengaduan.getValueAt(rowAtas, 0).toString();
+            nik  = tabel_pengaduan.getValueAt(rowAtas, 1).toString();
+            nama = tabel_pengaduan.getValueAt(rowAtas, 2).toString();
+            tgl  = tabel_pengaduan.getValueAt(rowAtas, 3).toString();
+            isi  = tabel_pengaduan.getValueAt(rowAtas, 4).toString(); // Kolom Pengaduan
+            kat  = tabel_pengaduan.getValueAt(rowAtas, 5).toString(); // Kolom Kategori
+            lok  = tabel_pengaduan.getValueAt(rowAtas, 6).toString(); // Kolom Lokasi
+            foto = tabel_pengaduan.getValueAt(rowAtas, 7).toString(); // Kolom Foto
+            stat = tabel_pengaduan.getValueAt(rowAtas, 8).toString(); // Kolom Status
+
+            teksTampilan = 
+                "ID           : " + id + "\n" +
+                "NIK/NISN     : " + nik + "\n" +
+                "Nama Pelapor : " + nama + "\n" +
+                "Tanggal      : " + tgl + "\n" +
+                "Kategori     : " + kat + "\n" +
+                "Lokasi       : " + lok + "\n" +
+                "Status       : " + stat + "\n\n" +
+                "Isi Laporan  :\n" + isi;
+
+        } else {
+            // --- TABEL BAWAH (TANGGAPAN) ---
+            id       = tabel_feedback.getValueAt(rowBawah, 0).toString();
+            nik      = tabel_feedback.getValueAt(rowBawah, 1).toString();
+            nama     = tabel_feedback.getValueAt(rowBawah, 2).toString();
+            tgl      = tabel_feedback.getValueAt(rowBawah, 3).toString();
+            feedback = tabel_feedback.getValueAt(rowBawah, 4).toString();
+            stat     = tabel_feedback.getValueAt(rowBawah, 5).toString();
+            
+            // Query ambil Username, Foto, Kategori, Lokasi, dan Isi dari DB
+            String sql = "SELECT p.username, peng.foto, peng.isi_laporan, peng.kategori, peng.lokasi "
+                       + "FROM tanggapan t "
+                       + "JOIN petugas p ON t.id_petugas = p.id_petugas "
+                       + "JOIN pengaduan peng ON t.id_pengaduan = peng.id_pengaduan "
+                       + "WHERE t.id_tanggapan = '" + id + "'";
+            
+            java.sql.Statement st = conn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            if (rs.next()) {
+                petugas = rs.getString("username"); //
+                foto    = rs.getString("foto");     
+                isi     = rs.getString("isi_laporan");
+                kat     = rs.getString("kategori");
+                lok     = rs.getString("lokasi");
+            }
+
+            teksTampilan = 
+                "ID           : " + id + "\n" +
+                "NIK/NISN     : " + nik + "\n" +
+                "Nama Pelapor : " + nama + "\n" +
+                "Nama Petugas : " + petugas + "\n" +
+                "Tanggal      : " + tgl + "\n" +
+                "Status       : " + stat + "\n\n" +
+                "Isi Laporan Asli :\n" + isi +"\n\n" +
+                "Feedback/Tanggapan :\n" + feedback;
+        }
+
+        // --- SETUP TAMPILAN ---
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        JTextArea txt = new JTextArea(teksTampilan);
+        txt.setEditable(false);
+        txt.setLineWrap(true);
+        txt.setWrapStyleWord(true);
+        txt.setFont(new java.awt.Font("Monospaced", 0, 12)); 
+        
+        JScrollPane scroll = new JScrollPane(txt);
+        scroll.setPreferredSize(new Dimension(450, 400));
+        panel.add(scroll, BorderLayout.CENTER);
+
+        if (foto != null && !foto.isEmpty() && !foto.equals("-")) {
+            try {
+                JLabel lblFoto = new JLabel();
+                ImageIcon icon = new ImageIcon(foto);
+                Image img = icon.getImage().getScaledInstance(250, 300, Image.SCALE_SMOOTH);
+                lblFoto.setIcon(new ImageIcon(img));
+                panel.add(lblFoto, BorderLayout.EAST);
+            } catch (Exception e) {}
+        }
+
+        JOptionPane.showMessageDialog(this, panel, "Detail", JOptionPane.INFORMATION_MESSAGE);
+
     } catch (Exception e) {
-        lblFoto.setText("Gambar tidak ditemukan");
+        JOptionPane.showMessageDialog(this, "Kesalahan: " + e.getMessage());
     }
-
-    // ================= GABUNG PANEL =================
-    panel.add(scrollText, BorderLayout.CENTER);
-    panel.add(lblFoto, BorderLayout.EAST);
-
-    JOptionPane.showMessageDialog(
-        this,
-        panel,
-        "Detail Pengaduan",
-        JOptionPane.INFORMATION_MESSAGE
-    );
+    
+    tabel_pengaduan.clearSelection();
+    tabel_feedback.clearSelection();
             // TODO add your handling code here:
     }//GEN-LAST:event_detailActionPerformed
 
     private void tabel_feedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_feedbackMouseClicked
+    tabel_pengaduan.clearSelection();
     int baris = tabel_pengaduan.getSelectedRow();
     if (baris == -1) return; // kalau belum pilih baris
 
@@ -1036,16 +1127,16 @@ try {
             if (!foto.equals("")) {
                 ImageIcon icon = new ImageIcon(foto);
                 Image img = icon.getImage().getScaledInstance(
-                        jLabel8.getWidth(),
-                        jLabel8.getHeight(),
+                        lbl_foto.getWidth(),
+                        lbl_foto.getHeight(),
                         Image.SCALE_SMOOTH
                 );
-                jLabel8.setIcon(new ImageIcon(img));
+                lbl_foto.setIcon(new ImageIcon(img));
             } else {
-                jLabel8.setIcon(null);
+                lbl_foto.setIcon(null);
             }
         } else {
-            jLabel8.setIcon(null);
+            lbl_foto.setIcon(null);
         }
 
     } catch (Exception e) {
@@ -1059,6 +1150,27 @@ try {
     private void lokasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lokasiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lokasiActionPerformed
+
+    private void btn_cek_petugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cek_petugasActionPerformed
+    try {
+        String sql = "SELECT username FROM petugas WHERE id_petugas = ?";
+        pst = conn.prepareStatement(sql);
+        pst.setString(1, txt_id_petugas.getText());
+        rs = pst.executeQuery();
+        
+        if (rs.next()) {
+            // Jika ID ketemu, tampilkan namanya di field kedua
+            txt_nama_petugas.setText(rs.getString("username"));
+        } else {
+            // Jika tidak ada, kosongkan dan beri peringatan
+            txt_nama_petugas.setText("");
+            JOptionPane.showMessageDialog(null, "ID Petugas tidak ditemukan!");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal mengecek petugas: " + e.getMessage());
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cek_petugasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1097,6 +1209,7 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cari;
+    private javax.swing.JButton btn_cek_petugas;
     private javax.swing.JButton btn_refrest;
     private javax.swing.JComboBox<String> cb_kategori;
     private javax.swing.JComboBox<String> cmb_kategori;
@@ -1111,25 +1224,29 @@ try {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lbl_foto;
     private javax.swing.JTextField lokasi;
     private javax.swing.JTable tabel_feedback;
     private javax.swing.JTable tabel_pengaduan;
     private javax.swing.JTextField txt_NIK;
     private javax.swing.JTextField txt_cari;
     private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_id_petugas;
     private javax.swing.JTextField txt_nama;
+    private javax.swing.JTextField txt_nama_petugas;
     private javax.swing.JTextArea txt_pengaduan;
     private javax.swing.JTextArea txt_tanggapan;
     private com.toedter.calendar.JDateChooser txt_tgl;
