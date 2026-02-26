@@ -142,26 +142,26 @@ public class datapengaduan extends javax.swing.JFrame {
         cmb_kategori = new javax.swing.JComboBox<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
         lbl_total = new javax.swing.JLabel();
         btn_detail = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("PENGADUAN");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setText("refresh");
+        jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 50, 20));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 950, 110, 40));
 
+        jButton7.setBackground(new java.awt.Color(0,0,0,0));
         jButton7.setText("exit");
         jButton7.setBorder(null);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -169,16 +169,15 @@ public class datapengaduan extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 50, 20));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 950, 100, 40));
 
-        filtter.setText("filter");
         filtter.setBorder(null);
         filtter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filtterActionPerformed(evt);
             }
         });
-        jPanel1.add(filtter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 60, 20));
+        jPanel1.add(filtter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 240, 140, 50));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,24 +197,22 @@ public class datapengaduan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 590, 290));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 1620, 570));
 
+        cmb_kategori.setBackground(new java.awt.Color(0,0,0,0));
+        cmb_kategori.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sarana", "Prasarana" }));
+        cmb_kategori.setBorder(null);
         cmb_kategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_kategoriActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 110, 20));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 130, -1));
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 120, -1));
+        jPanel1.add(cmb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 180, 220, 50));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 270, 30));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 250, 250, 30));
 
-        jLabel1.setText("Sampai");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
-
-        jLabel2.setText("Dari");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
-
+        txt_cari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_cari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cariActionPerformed(evt);
@@ -226,28 +223,33 @@ public class datapengaduan extends javax.swing.JFrame {
                 txt_cariKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 340, -1));
+        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 750, 50));
 
+        lbl_total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_total.setText("TOTAL:");
-        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 960, -1, -1));
 
-        btn_detail.setText("detail");
+        btn_detail.setBackground(new java.awt.Color(0,0,0,0));
+        btn_detail.setBorder(null);
         btn_detail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_detailActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
+        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 950, 110, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/riwayat pengaduan.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -564,8 +566,7 @@ public class datapengaduan extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

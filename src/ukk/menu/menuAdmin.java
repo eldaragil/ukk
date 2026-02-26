@@ -14,6 +14,7 @@ import ukk.login_register.login;
 import ukk.admin.registrasiWaka;
 import ukk.admin.registrasiWaka;
 import ukk.admin.TanggapanAdmin;
+import ukk.login_register.loginadmin;
 
 /**
  *
@@ -153,7 +154,7 @@ public class menuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_CActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      login login = new login();
+      loginadmin login = new loginadmin();
         login.setVisible(true);
         this.setVisible(false); 
         this.dispose(); 

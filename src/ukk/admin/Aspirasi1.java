@@ -182,6 +182,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
         txt_tanggal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(txt_tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 410, 50));
 
+        btn_simpan.setBackground(new java.awt.Color(0,0,0,0));
         btn_simpan.setBorder(null);
         btn_simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

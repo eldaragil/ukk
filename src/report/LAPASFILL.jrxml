@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e113fe9d-5fe0-4df2-8c7b-b000ed9e926d">
 	<property name="ireport.zoom" value="2.143588810000003"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="51"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -63,6 +63,10 @@ Telepon: (0353) 892418]]></text>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
+			<image>
+				<reportElement x="30" y="0" width="74" height="71" uuid="e2d3c59c-07d3-4a30-a3c4-545dda93df5b"/>
+				<imageExpression><![CDATA["D:\\buiza\\ukk\\src\\report\\LOGOJTIM.jpg.jpeg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

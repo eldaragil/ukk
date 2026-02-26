@@ -59,9 +59,9 @@ public class register extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txt_nik = new javax.swing.JTextField();
         txt_nama = new javax.swing.JTextField();
-        txt_password = new javax.swing.JPasswordField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        txt_password = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -70,26 +70,24 @@ public class register extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_nik.setBackground(new java.awt.Color(0,0,0,0));
+        txt_nik.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_nik.setBorder(null);
         txt_nik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nikActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 330, 580, 60));
+        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 440, 610, 80));
 
         txt_nama.setBackground(new java.awt.Color(0,0,0,0));
+        txt_nama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_nama.setBorder(null);
         txt_nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_namaActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 460, 580, 60));
-
-        txt_password.setBackground(new java.awt.Color(0,0,0,0));
-        txt_password.setBorder(null);
-        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 590, 580, 60));
+        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 590, 610, 80));
 
         jButton4.setBackground(new java.awt.Color(0,0,0,0));
         jButton4.setBorder(null);
@@ -98,7 +96,7 @@ public class register extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 690, 450, 60));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 840, 710, 50));
 
         jButton5.setBackground(new java.awt.Color(0,0,0,0));
         jButton5.setBorder(null);
@@ -107,11 +105,16 @@ public class register extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1600, 770, 130, 30));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1690, 260, 70, 50));
+
+        txt_password.setBackground(new java.awt.Color(0,0,0,0));
+        txt_password.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_password.setBorder(null);
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 730, 610, 80));
 
         jLabel8.setBackground(new java.awt.Color(0,0,0,0));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Register.png"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1920, 1090));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/regisster (1).png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1090));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -23,55 +23,38 @@ public class splashscreen extends javax.swing.JFrame {
      */
     private JProgressBar progress;
     
-    public splashscreen() {
-        
-        
-     setUndecorated(true);
-        setSize(500, 300);
-        setLocationRelativeTo(null);
-        setLayout(null);
-
-        progress = new JProgressBar();
-        progress.setBounds(100, 180, 300, 25);
-        progress.setStringPainted(true);
-        add(progress);
-
-        setVisible(true);
-
-        loading(); // panggil method loading
+    
+public splashscreen() {
+        initComponents(); // wajib dipanggil dulu
+        setLocationRelativeTo(null); // supaya di tengah layar
+        loading(); // panggil loading setelah semua komponen siap
     }
 
     private void loading() {
-
         SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
-
-           
+            @Override
             protected Void doInBackground() throws Exception {
-
                 for (int i = 0; i <= 100; i++) {
-                    Thread.sleep(30); // kecepatan loading
-                    publish(i); // kirim nilai ke progress bar
+                    Thread.sleep(30);
+                    publish(i);
                 }
-
                 return null;
             }
 
-           
+            @Override
             protected void process(java.util.List<Integer> chunks) {
                 int value = chunks.get(chunks.size() - 1);
-                progress.setValue(value);
+                jProgressBar1.setValue(value); // gunakan progress bar GUI builder
             }
 
-           
+            @Override
             protected void done() {
-                new menulogin().setVisible(true); // buka form login
-                dispose(); // tutup splash
+                new menulogin().setVisible(true);
+                dispose();
             }
         };
-
         worker.execute();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,25 +67,15 @@ public class splashscreen extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(254, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170))
-        );
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 670, 790, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/splash (4).png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 4, 1930, 1080));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,6 +127,7 @@ public class splashscreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables

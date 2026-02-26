@@ -49,6 +49,7 @@ Connection conn = null;
         passwordTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,7 +63,7 @@ Connection conn = null;
                 usernameTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 470, 60));
+        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 470, 670, 70));
 
         passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
         passwordTxt.setBorder(null);
@@ -71,7 +72,7 @@ Connection conn = null;
                 passwordTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 610, 60));
+        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 620, 670, 70));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -80,7 +81,7 @@ Connection conn = null;
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 650, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 720, 370, 60));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -91,9 +92,18 @@ Connection conn = null;
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 710, 170, 60));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1410, 720, 330, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Login.png"))); // NOI18N
+        jButton3.setBackground(new java.awt.Color(0,0,0,0));
+        jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1690, 250, 70, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/Login.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,6 +181,17 @@ if (usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()) {
                         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ukk.login_register.menulogin menu = new ukk.login_register.menulogin();
+    
+    // 2. Menampilkan Menu Admin
+    menu.setVisible(true);
+    
+    // 3. Menutup halaman Riwayat Aspirasi saat ini
+    this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,6 +233,7 @@ if (usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField passwordTxt;

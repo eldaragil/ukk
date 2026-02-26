@@ -200,6 +200,8 @@ public class pengaduan extends javax.swing.JFrame {
         setTitle("PENGADUAN");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jd_tglpengaduan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(jd_tglpengaduan, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 400, 50));
 
         txt_nik.setBackground(new java.awt.Color(0,0,0,0));

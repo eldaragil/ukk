@@ -270,7 +270,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
         });
         jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 790, 70, 40));
 
-        txt_tanggal.setBackground(new java.awt.Color(0,0,0,0));
+        txt_tanggal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel1.add(txt_tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 400, 40));
 
         btn_simpan.setBackground(new java.awt.Color(0,0,0,0));
