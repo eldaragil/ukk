@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import Koneksi.Koneksi;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import ukk.menu.menuAdmin;
 import ukk.menu.menuWaka;
 import ukk.session;
@@ -25,6 +27,7 @@ public class login extends javax.swing.JFrame {
 Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
+  
 
     public login() {
          initComponents();
@@ -33,7 +36,12 @@ Connection conn = null;
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
     
-
+    private ImageIcon resizeIcon(String path, int width, int height) {
+    ImageIcon icon = new ImageIcon(getClass().getResource(path));
+    Image img = icon.getImage();
+    Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+    return new ImageIcon(newImg);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,10 +53,11 @@ Connection conn = null;
 
         jPanel1 = new javax.swing.JPanel();
         usernameTxt = new javax.swing.JTextField();
-        passwordTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        lblEye = new javax.swing.JLabel();
+        passwordTxt = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,16 +73,6 @@ Connection conn = null;
             }
         });
         jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 470, 670, 70));
-
-        passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
-        passwordTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        passwordTxt.setBorder(null);
-        passwordTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTxtActionPerformed(evt);
-            }
-        });
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 620, 670, 70));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -104,6 +103,17 @@ Connection conn = null;
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1700, 250, 50, 70));
 
+        lblEye.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEyeMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblEye, new org.netbeans.lib.awtextra.AbsoluteConstraints(1660, 630, 70, 40));
+
+        passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
+        passwordTxt.setBorder(null);
+        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 620, 670, 70));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/Login Pelapor.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
@@ -124,10 +134,6 @@ Connection conn = null;
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTxtActionPerformed
-
-    private void passwordTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTxtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -195,6 +201,10 @@ Connection conn = null;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void lblEyeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEyeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblEyeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -236,7 +246,8 @@ Connection conn = null;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField passwordTxt;
+    private javax.swing.JLabel lblEye;
+    private javax.swing.JPasswordField passwordTxt;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
 }

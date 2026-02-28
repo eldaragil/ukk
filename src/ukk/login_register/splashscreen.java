@@ -28,6 +28,8 @@ public splashscreen() {
         initComponents(); // wajib dipanggil dulu
         setLocationRelativeTo(null); // supaya di tengah layar
         loading(); // panggil loading setelah semua komponen siap
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     private void loading() {

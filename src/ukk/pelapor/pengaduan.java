@@ -5,6 +5,7 @@
  */
 package ukk.pelapor;
 
+import Koneksi.Koneksi;
 import ukk.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,10 +62,12 @@ public class pengaduan extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);// membuat tengah form
         setTanggalHariIni();
-        conn = Koneksi.Koneksi.KoneksiDB();
-        tampilIdPengaduan();
+        conn = Koneksi.KoneksiDB();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         txt_nik.setText(session.getNik());
         txt_nik.setEditable(false);
+         
 
        // getData();//javaConnect = nama file || Connection = nama method
         
@@ -83,44 +86,80 @@ public class pengaduan extends javax.swing.JFrame {
         model.addColumn("Status");
         
         
-        
+        tampilIdPengaduan();
         getData();//memanggil method getdata
        }
     //menampilkan data kejTabel1
     void getData() {
-    model.getDataVector().removeAllElements();
-    model.fireTableDataChanged();
-       
-    
+
     try {
-        String sql = "SELECT * FROM pengaduan WHERE nik = ?";
+        conn = Koneksi.KoneksiDB();
+        model.setRowCount(0);
+
+        String sql = "SELECT * FROM pengaduan WHERE nik=? AND status=? ORDER BY id_pengaduan DESC";
         pst = conn.prepareStatement(sql);
         pst.setString(1, session.getNik());
+        pst.setString(2, "menunggu");
+
         rs = pst.executeQuery();
 
-        
-        //penelusuran baris pada table surat_masuk dari database
         while (rs.next()) {
-            Object[] obj = new Object[9];
-            obj[0] = rs.getString("id_pengaduan");
-            obj[1] = rs.getString("nik");
-            obj[2] = rs.getString("nama");
-            obj[3] = rs.getString("tgl_pengaduan");
-            obj[4] = rs.getString("isi_laporan");
-            obj[5] = rs.getString("foto");
-            obj[6] = rs.getString("Kategori");
-            obj[7] = rs.getString("lokasi");
-            obj[8] = rs.getString("status");
-           
-            
- 
-            
-            model.addRow(obj);
+            model.addRow(new Object[]{
+                rs.getString("id_pengaduan"),
+                rs.getString("nik"),
+                rs.getString("nama"),
+                rs.getString("tgl_pengaduan"),
+                rs.getString("isi_laporan"),
+                rs.getString("foto"),
+                rs.getString("kategori"),
+                rs.getString("lokasi"),
+                rs.getString("status")
+            });
         }
+
+        jTable1.setModel(model);
+
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, e);      
+        JOptionPane.showMessageDialog(null, e.getMessage());
     }
-} 
+}
+    
+    void getDataByKategori() {
+
+    try {
+        conn = Koneksi.KoneksiDB();
+        model.setRowCount(0);
+
+        String kategori = cmb_kategori.getSelectedItem().toString();
+
+        String sql = "SELECT * FROM pengaduan WHERE nik=? AND status=? AND kategori=? ORDER BY id_pengaduan DESC";
+        pst = conn.prepareStatement(sql);
+        pst.setString(1, session.getNik());
+        pst.setString(2, "menunggu");
+        pst.setString(3, kategori);
+
+        rs = pst.executeQuery();
+
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getString("id_pengaduan"),
+                rs.getString("nik"),
+                rs.getString("nama"),
+                rs.getString("tgl_pengaduan"),
+                rs.getString("isi_laporan"),
+                rs.getString("foto"),
+                rs.getString("kategori"),
+                rs.getString("lokasi"),
+                rs.getString("status")
+            });
+        }
+
+        jTable1.setModel(model);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+}
 
  //menampilkan data dr tabel ke masing-masing komponen cara 2
    void pilihData() {
@@ -137,14 +176,35 @@ public class pengaduan extends javax.swing.JFrame {
    
    void bersih() {
      //  txt_pengaduan.setText("");
-       txt_nama.setText("");
-       txt_isi.setText("");
-       lokasi.setText("");
-       
-        // HAPUS FOTO
-       lbl_foto.setIcon(null);
-       pathFoto = null;
+        txt_nama.setText("");
+    txt_isi.setText("");
+    lokasi.setText("");
+
+    lbl_foto.setIcon(null);
+    pathFoto = null;
+
+    // Reset tanggal input ke hari ini (kalau ada methodnya)
+    setTanggalHariIni();
    }
+   
+   void refreshSemua() {
+
+    // Reset filter tanggal
+    jDateChooser1.setDate(null);
+    jDateChooser2.setDate(null);
+
+    // Reset combobox
+    cmb_kategori.setSelectedIndex(0);
+
+    // Reset pencarian
+    txt_cari.setText("");
+
+    // Hapus selection tabel
+    jTable1.clearSelection();
+
+    // Load ulang data awal
+    getData();
+}
    
    void tampilIdPengaduan() {
     try {
@@ -193,7 +253,6 @@ public class pengaduan extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         txt_cari = new javax.swing.JTextField();
-        lbl_total = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -377,10 +436,6 @@ public class pengaduan extends javax.swing.JFrame {
         });
         jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 180, 710, 40));
 
-        lbl_total.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_total.setText("TOTAL:");
-        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 1010, -1, -1));
-
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/PELAPOR PENGADUAN1.png"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
@@ -468,12 +523,13 @@ public class pengaduan extends javax.swing.JFrame {
             String dari = sdf.format(jDateChooser1.getDate());
             String sampai = sdf.format(jDateChooser2.getDate());
 
-            String sql = "SELECT * FROM pengaduan WHERE tgl_pengaduan BETWEEN ? AND ? AND nik=? ORDER BY tgl_pengaduan ASC";
+            String sql = "SELECT * FROM pengaduan WHERE tgl_pengaduan BETWEEN ? AND ? AND nik=? AND status=? ORDER BY tgl_pengaduan ASC";
 
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, dari);
             pst.setString(2, sampai);
             pst.setString(3, session.getNik());
+            pst.setString(4, "menunggu"); 
 
             ResultSet rs = pst.executeQuery();
 
@@ -524,13 +580,17 @@ public class pengaduan extends javax.swing.JFrame {
         lokasi.setText(model.getValueAt(i, 7).toString());
         
         // TANGGAL
+    Object obj = jTable1.getValueAt(i, 3);
+
+if (obj != null) {
     try {
-        String tanggal = model.getValueAt(i, 3).toString();
-        java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tanggal);
+        java.util.Date date = new java.text.SimpleDateFormat("yyyy-MM-dd")
+                .parse(obj.toString());
         jd_tglpengaduan.setDate(date);
     } catch (Exception e) {
-        e.printStackTrace();
+        jd_tglpengaduan.setDate(null);
     }
+}
 
     // ================= FOTO =================
     pathFoto = model.getValueAt(i, 5).toString();
@@ -557,42 +617,46 @@ public class pengaduan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         int baris = jTable1.getSelectedRow();
+       int baris = jTable1.getSelectedRow();
 
-        if (baris == -1) {
-            JOptionPane.showMessageDialog(null, "Pilih data dulu!");
-            return;
-        }
+if (baris == -1) {
+    JOptionPane.showMessageDialog(null, "Pilih data dulu!");
+    return;
+}
 
-        try {
-            // ambil ID dari kolom pertama tabel
-            String id = jTable1.getValueAt(baris, 0).toString();
+try {
+    conn = Koneksi.KoneksiDB(); // WAJIB
 
-            String sql = "DELETE FROM pengaduan WHERE id_pengaduan=?";
-            PreparedStatement pst = conn.prepareStatement(sql);
+    String id = jTable1.getValueAt(baris, 0).toString();
 
-            pst.setString(1, id);
+    String sql = "DELETE FROM pengaduan WHERE id_pengaduan=?";
+    PreparedStatement pst = conn.prepareStatement(sql);
+    pst.setString(1, id);
 
-            int rows = pst.executeUpdate();
+    int rows = pst.executeUpdate();
 
-            if (rows > 0) {
-                JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
-            }
+    if (rows > 0) {
+        JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
+    } else {
+        JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
+    }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
+    pst.close();
+    conn.close();
 
-        getData();
-        bersih();
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+}
+
+getData();
+bersih();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        bersih();
+//            bersih();
+        refreshSemua();
         getData();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -652,6 +716,7 @@ public class pengaduan extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_pengaduanActionPerformed
 
     private void cmb_kategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_kategoriActionPerformed
+        getDataByKategori();
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_kategoriActionPerformed
 
@@ -660,11 +725,11 @@ public class pengaduan extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_cariActionPerformed
 
     private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
- // Membuat model tabel baru (wadah untuk menampung data hasil query)
+     // Membuat model tabel baru (wadah untuk menampung data hasil query)
         DefaultTableModel model = new DefaultTableModel();
 
         // Menambahkan nama kolom pada tabel
-        model.addColumn("No");                // Nomor urut
+//        model.addColumn("No");                // Nomor urut
         model.addColumn("ID Pengaduan");      // ID pengaduan
         model.addColumn("NIK");               // NIK pelapor
         model.addColumn("Nama");              // Nama pelapor
@@ -684,7 +749,7 @@ public class pengaduan extends javax.swing.JFrame {
             String kategori = cmb_kategori.getSelectedItem().toString();
 
             // Query dasar (1=1 supaya mudah ditambahkan kondisi AND)
-            String sql = "SELECT * FROM pengaduan WHERE 1=1";
+            String sql = "SELECT * FROM pengaduan WHERE status = 'menunggu'";
 
             // Jika kolom pencarian tidak kosong, tambahkan filter nama
             if (!cari.equals("")) {
@@ -725,7 +790,7 @@ public class pengaduan extends javax.swing.JFrame {
 
                 // Menambahkan setiap baris data ke dalam tabel
                 model.addRow(new Object[]{
-                    no++,                                   // Nomor urut otomatis
+                   // no++,                                   // Nomor urut otomatis
                     res.getString("id_pengaduan"),           // Ambil data id_pengaduan
                     res.getString("nik"),                    // Ambil data nik
                     res.getString("nama"),                   // Ambil data nama
@@ -741,8 +806,7 @@ public class pengaduan extends javax.swing.JFrame {
             // Menampilkan model ke JTable
             jTable1.setModel(model);
 
-            // Menampilkan total data yang ditemukan
-            lbl_total.setText("TOTAL HASIL: " + model.getRowCount() + " Data");
+           
 
         } catch (Exception e) {
 
@@ -809,7 +873,6 @@ public class pengaduan extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jd_tglpengaduan;
     private javax.swing.JComboBox<String> kategori;
     private javax.swing.JLabel lbl_foto;
-    private javax.swing.JLabel lbl_total;
     private javax.swing.JTextField lokasi;
     private javax.swing.JTextField txt_cari;
     private javax.swing.JTextArea txt_isi;

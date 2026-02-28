@@ -65,6 +65,8 @@ public class datapengaduan extends javax.swing.JFrame {
         conn = Koneksi.Koneksi.KoneksiDB();
         model = new DefaultTableModel();
         jTable1.setModel(model);
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
 
        // tampilIdPengaduan();
 

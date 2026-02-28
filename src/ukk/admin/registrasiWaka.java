@@ -39,6 +39,8 @@ public class registrasiWaka extends javax.swing.JFrame {
         setLocationRelativeTo(this);// membuat tengah form
         conn = Koneksi.Koneksi.KoneksiDB();
         tampilId();//javaConnect = nama file || Connection = nama method
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
         //memberi penamaan pada judul kolom ; 
         model = new DefaultTableModel();

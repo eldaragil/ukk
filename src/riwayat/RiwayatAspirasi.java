@@ -21,6 +21,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
+import ukk.session;
 
 
 /**
@@ -38,6 +39,8 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
     public RiwayatAspirasi() {
         initComponents();
         load_riwayat();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     
     }
     
@@ -279,29 +282,61 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
 
     private void btn_cetak_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetak_filterActionPerformed
         // TODO add your handling code here:                                                                                               
-    try {
-        if (tgl_dari.getDate() == null || tgl_sampai.getDate() == null) {
-            JOptionPane.showMessageDialog(this, "Pilih tanggal filter dulu sebelum cetak!");
-            return;
-        }
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.HashMap parameter = new java.util.HashMap();
-        
-        parameter.put("tgl_awal", sdf.format(tgl_dari.getDate()));
-        parameter.put("tgl_akhir", sdf.format(tgl_sampai.getDate()));
+   try {
 
-        // Lokasi file pastikan huruf besar kecilnya sama dengan di folder project
-        java.io.File reportFile = new java.io.File("src/report/LAPASFILL.jasper");
-        
-        // PERBAIKAN: Menggunakan ukk.koneksiDB.getKoneksi()
-        java.sql.Connection conn = Koneksi.Koneksi.KoneksiDB();
-        
-        JasperPrint jp = JasperFillManager.fillReport(reportFile.getPath(), parameter, conn);
-        JasperViewer.viewReport(jp, false);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Cetak Gagal: " + e.getMessage());
+    if (tgl_dari.getDate() == null || tgl_sampai.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "Silakan pilih rentang tanggal!");
+        return;
     }
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    String dari = sdf.format(tgl_dari.getDate());
+    String sampai = sdf.format(tgl_sampai.getDate());
+
+    String sql = "SELECT "
+        + "id_aspirasi AS aspirasi_id_aspirasi, "
+        + "nik AS aspirasi_nik, "
+        + "nama AS aspirasi_nama, "
+        + "isi_aspirasi AS aspirasi_isi_aspirasi, "
+        + "kategori AS aspirasi_kategori, "
+        + "status AS aspirasi_status, "
+        + "tanggal AS aspirasi_tanggal, "
+        + "tanggal_tang AS aspirasi_tanggal_tang "
+        + "FROM aspirasi "
+        + "WHERE tanggal BETWEEN ? AND ? "
+        + "AND status IN ('terimakasih','diterapkan') "
+        + "ORDER BY tanggal ASC";
+
+    Connection conn = Koneksi.Koneksi.KoneksiDB();
+    PreparedStatement pst = conn.prepareStatement(sql);
+
+    pst.setString(1, dari);
+    pst.setString(2, sampai);
+
+    ResultSet rp = pst.executeQuery();
+
+    JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
+
+    JasperReport jasperReport = JasperCompileManager.compileReport(
+            "D:/buiza/ukk/src/report/aspirasi.jrxml"
+    );
+
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
+
+    JRViewer viewer = new JRViewer(jasperPrint);
+    JDialog dialog = new JDialog();
+    dialog.setTitle("Laporan Data Aspirasi");
+    dialog.setAlwaysOnTop(true);
+    dialog.getContentPane().add(viewer);
+
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    dialog.setBounds(0, 0, screenSize.width, screenSize.height);
+    dialog.setVisible(true);
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
+    e.printStackTrace();
+}
     }//GEN-LAST:event_btn_cetak_filterActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -371,44 +406,44 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
 //            return;
 //        }
         String sql = "SELECT " +
-                 "aspirasi.id_aspirasi AS aspirasi_id_aspirasi, " +
-                 "aspirasi.nik AS aspirasi_nik, " +
-                 "aspirasi.nama AS aspirasi_nama, " +
-                 "aspirasi.isi_aspirasi AS aspirasi_isi_aspirasi, " +
-                 "aspirasi.kategori AS aspirasi_kategori, " +
-                 "aspirasi.status AS aspirasi_status, " +
-                 "aspirasi.feedback AS aspirasi_feedback, " +
-                 "aspirasi.tanggal AS aspirasi_tanggal " +
-                 "FROM aspirasi ORDER BY tanggal DESC";
+             "aspirasi.id_aspirasi AS aspirasi_id_aspirasi, " +
+             "aspirasi.nik AS aspirasi_nik, " +
+             "aspirasi.nama AS aspirasi_nama, " +
+             "aspirasi.isi_aspirasi AS aspirasi_isi_aspirasi, " +
+             "aspirasi.kategori AS aspirasi_kategori, " +
+             "aspirasi.status AS aspirasi_status, " +
+             "aspirasi.tanggal AS aspirasi_tanggal, " +
+             "aspirasi.tanggal_tang AS aspirasi_tanggal_tang " +
+             "FROM aspirasi aspirasi";
 
-    try {
+try {
 
-        Connection conn = Koneksi.Koneksi.KoneksiDB();
-        PreparedStatement pst = conn.prepareStatement(sql);
-        ResultSet rp = pst.executeQuery();
+    Connection conn = Koneksi.Koneksi.KoneksiDB();
+    PreparedStatement pst = conn.prepareStatement(sql);
+    ResultSet rp = pst.executeQuery();
 
-        JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
+    JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
 
-        JasperReport jasperReport = JasperCompileManager.compileReport(
-                "D:/buiza/ukk/src/report/LAPASALL.jrxml"
-        );
+    JasperReport jasperReport = JasperCompileManager.compileReport(
+            "D:/buiza/ukk/src/report/aspirasi.jrxml"
+    );
 
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
 
-        JRViewer viewer = new JRViewer(jasperPrint);
-        JDialog dialog = new JDialog();
-        dialog.setTitle("Laporan Data Aspirasi");
-        dialog.setAlwaysOnTop(true);
-        dialog.getContentPane().add(viewer);
+    JRViewer viewer = new JRViewer(jasperPrint);
+    JDialog dialog = new JDialog();
+    dialog.setTitle("Laporan Data Aspirasi");
+    dialog.setAlwaysOnTop(true);
+    dialog.getContentPane().add(viewer);
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        dialog.setBounds(0, 0, screenSize.width, screenSize.height);
-        dialog.setVisible(true);
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    dialog.setBounds(0, 0, screenSize.width, screenSize.height);
+    dialog.setVisible(true);
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
-        e.printStackTrace();
-    }
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
+    e.printStackTrace();
+}
 
     
     }//GEN-LAST:event_btn_cetak_allActionPerformed

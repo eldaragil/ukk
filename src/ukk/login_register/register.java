@@ -39,6 +39,8 @@ public class register extends javax.swing.JFrame {
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(this);// membuat tengah form
         conn = Koneksi.Koneksi.KoneksiDB(); //javaConnect = nama file || Connection = nama method
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
  
    void bersih() {

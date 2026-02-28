@@ -81,7 +81,7 @@ Telepon: (0353) 892418]]></text>
 			</staticText>
 			<image>
 				<reportElement x="35" y="4" width="53" height="72" uuid="5d75060b-0f1b-4a57-916e-f2f8b878fe6d"/>
-				<imageExpression><![CDATA["C:\\Users\\ASUS\\Downloads\\LOGOSMKHEBATJOS.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["D:/buiza/ukk/src/report/LOGOSMKHEBATJOS.jpg.jpeg"]]></imageExpression>
 			</image>
 			<line>
 				<reportElement x="27" y="85" width="750" height="1" uuid="08a7eedf-32b4-4bca-b34a-4566569ebd84"/>
@@ -97,7 +97,7 @@ Telepon: (0353) 892418]]></text>
 			</line>
 			<image>
 				<reportElement x="696" y="0" width="82" height="89" uuid="a05cbab8-5bad-4af4-be7d-61f2ae6c4bb2"/>
-				<imageExpression><![CDATA["C:\\Users\\ASUS\\Downloads\\LOGOJTIM.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["D:/buiza/ukk/src/report/LOGOJTIM.jpg.jpeg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

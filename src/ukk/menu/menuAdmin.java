@@ -27,6 +27,8 @@ public class menuAdmin extends javax.swing.JFrame {
      */
     public menuAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -58,7 +60,7 @@ public class menuAdmin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 360, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 360, 50));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -67,7 +69,7 @@ public class menuAdmin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 540, 360, 50));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 400, 50));
 
         C.setBackground(new java.awt.Color(0,0,0,0));
         C.setBorder(null);
@@ -76,7 +78,7 @@ public class menuAdmin extends javax.swing.JFrame {
                 CActionPerformed(evt);
             }
         });
-        jPanel1.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 930, 360, 50));
+        jPanel1.add(C, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 620, 450, 50));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +86,7 @@ public class menuAdmin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 940, 150, 60));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 770, 190, 60));
 
         jButton4.setBackground(new java.awt.Color(0,0,0,0));
         jButton4.setBorder(null);
@@ -93,7 +95,7 @@ public class menuAdmin extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, 360, 50));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 360, 50));
 
         jButton5.setBackground(new java.awt.Color(0,0,0,0));
         jButton5.setBorder(null);
@@ -102,7 +104,7 @@ public class menuAdmin extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 930, 360, 50));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 680, 390, 50));
 
         jButton6.setBackground(new java.awt.Color(0,0,0,0));
         jButton6.setBorder(null);
@@ -111,10 +113,10 @@ public class menuAdmin extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 930, 360, 50));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 360, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/menu admin (1)_1.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/riwayat pengaduan (1).png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -20, 1950, 1100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

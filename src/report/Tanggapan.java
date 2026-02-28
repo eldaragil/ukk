@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ukk.admin;
+package report;
 
+import ukk.admin.*;
 import java.awt.Image;
 import java.io.File;
 import java.sql.Connection;
@@ -41,7 +42,7 @@ import javax.swing.table.TableModel;
  *
  * @author asus
  */
-public class TanggapanAdmin extends javax.swing.JFrame {
+public class Tanggapan extends javax.swing.JFrame {
 
     Connection conn = null;
     ResultSet rs = null;
@@ -51,15 +52,13 @@ public class TanggapanAdmin extends javax.swing.JFrame {
     /**
      * Creates new form TanggapanAdmin
      */
-    public TanggapanAdmin() {
+    public Tanggapan() {
         initComponents();
         conn = Koneksi.KoneksiDB();
         tampil_tabel();
         setTanggalHariIni();
         tabel_pengaduan.requestFocus();
         getDataTanggapan();
-        this.setLocationRelativeTo(null);
-        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
         
     }
@@ -917,20 +916,21 @@ if (txt_id.getText().isEmpty() || txt_NIK.getText().isEmpty() ||
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TanggapanAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tanggapan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TanggapanAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tanggapan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TanggapanAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tanggapan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TanggapanAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tanggapan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TanggapanAdmin().setVisible(true);
+                new Tanggapan().setVisible(true);
             }
         });
     }

@@ -39,7 +39,8 @@ public class Aspirasi1 extends javax.swing.JFrame {
     public Aspirasi1() {
         initComponents();
         tampilkan_data();
-        setTanggalHariIni();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -63,7 +64,6 @@ public class Aspirasi1 extends javax.swing.JFrame {
         cb_filter = new javax.swing.JComboBox<>();
         txt_id = new javax.swing.JTextField();
         btn_refresh = new javax.swing.JButton();
-        txt_tanggal = new com.toedter.calendar.JDateChooser();
         btn_simpan = new javax.swing.JButton();
         btn_hapus = new javax.swing.JButton();
         cb_kategori = new javax.swing.JComboBox<>();
@@ -83,7 +83,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 txt_nikActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 380, 50));
+        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 380, 40));
 
         txt_nama.setEditable(false);
         txt_nama.setBackground(new java.awt.Color(0,0,0,0));
@@ -94,7 +94,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 txt_namaActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 380, 50));
+        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 380, 50));
 
         txt_isi.setEditable(false);
         txt_isi.setBackground(new java.awt.Color(0,0,0,0));
@@ -104,7 +104,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
         txt_isi.setBorder(null);
         jScrollPane1.setViewportView(txt_isi);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 660, 390, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, 390, 100));
 
         cb_status.setBackground(new java.awt.Color(0,0,0,0));
         cb_status.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -115,7 +115,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 cb_statusActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 790, 380, 50));
+        jPanel1.add(cb_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, 390, 50));
 
         tbAspirasi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,7 +135,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbAspirasi);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 320, 1000, 650));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 1000, 650));
 
         txt_cari.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -150,7 +150,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 txt_cariKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 220, 710, 50));
+        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 680, 40));
 
         cb_filter.setBackground(new java.awt.Color(0,0,0,0));
         cb_filter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -161,13 +161,13 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 cb_filterActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 220, 100, 50));
+        jPanel1.add(cb_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 230, 100, 40));
 
         txt_id.setEditable(false);
         txt_id.setBackground(new java.awt.Color(0,0,0,0));
         txt_id.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_id.setBorder(null);
-        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 380, 50));
+        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 380, 40));
 
         btn_refresh.setBackground(new java.awt.Color(0,0,0,0));
         btn_refresh.setBorder(null);
@@ -176,11 +176,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 btn_refreshActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 870, 70, 40));
-
-        txt_tanggal.setBackground(new java.awt.Color(153, 153, 153));
-        txt_tanggal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(txt_tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 410, 50));
+        jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 780, 70, 40));
 
         btn_simpan.setBackground(new java.awt.Color(0,0,0,0));
         btn_simpan.setBorder(null);
@@ -189,7 +185,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 btn_simpanActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 870, 80, 40));
+        jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 780, 80, 40));
 
         btn_hapus.setBackground(new java.awt.Color(0,0,0,0));
         btn_hapus.setBorder(null);
@@ -198,14 +194,14 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 btn_hapusActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 870, 80, 40));
+        jPanel1.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 780, 80, 40));
 
         cb_kategori.setBackground(new java.awt.Color(0,0,0,0));
         cb_kategori.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cb_kategori.setForeground(new java.awt.Color(102, 102, 102));
         cb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hardware PC Lab", "Software & Library", "Jaringan & Internet", "Sarana Ruang Praktik", "Kelistrikan & Kabel" }));
         cb_kategori.setBorder(null);
-        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 590, 380, 40));
+        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 390, 50));
 
         cb_statusfil.setBackground(new java.awt.Color(0,0,0,0));
         cb_statusfil.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -216,10 +212,10 @@ public class Aspirasi1 extends javax.swing.JFrame {
                 cb_statusfilActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_statusfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1700, 220, 140, 50));
+        jPanel1.add(cb_statusfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1700, 230, 120, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/aspirasi tan.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/aspirasi tan.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1920, 1090));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,37 +239,33 @@ public class Aspirasi1 extends javax.swing.JFrame {
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
         // TODO add your handling code here:                                                                             
   try {
-    // 1. Ambil data dari inputan
     String id_aspirasi = txt_id.getText(); 
     String status_baru = cb_status.getSelectedItem().toString();
 
-    // Validasi kalau ID kosong
     if (id_aspirasi.equals("")) {
         JOptionPane.showMessageDialog(this, "Pilih data di tabel dahulu!");
         return;
     }
 
-    // 2. Koneksi ke Database
-    java.sql.Connection conn = Koneksi.Koneksi.KoneksiDB();
+    Connection conn = Koneksi.Koneksi.KoneksiDB();
 
-    // 3. Query Update Status
-    String sqlUpdate = "UPDATE aspirasi SET status=? WHERE id_aspirasi=?"; 
-    
-    java.sql.PreparedStatement pstUp = conn.prepareStatement(sqlUpdate);
-    pstUp.setString(1, status_baru); // Mengisi tanda tanya ke-1
-    pstUp.setString(2, id_aspirasi); // Mengisi tanda tanya ke-2
-    
+    String sqlUpdate = "UPDATE aspirasi "
+                     + "SET status=?, tanggal_tang=CURDATE() "
+                     + "WHERE id_aspirasi=?"; 
+
+    PreparedStatement pstUp = conn.prepareStatement(sqlUpdate);
+    pstUp.setString(1, status_baru);
+    pstUp.setString(2, id_aspirasi);
+
     int hasil = pstUp.executeUpdate();
 
-    // 4. Cek hasil
     if (hasil > 0) {
-        JOptionPane.showMessageDialog(null, "Status berhasil diperbarui!");
-        tampilkan_data(); // Panggil fungsi refresh tabel kamu
-        bersih();         // Panggil fungsi reset form kamu
+        JOptionPane.showMessageDialog(null, "Status & tanggal tanggapan berhasil diperbarui!");
+        tampilkan_data();
+        bersih();
     }
-    
+
 } catch (Exception e) {
-    // Pastikan bagian ini TIDAK berisi "throw new UnsupportedOperationException"
     JOptionPane.showMessageDialog(this, "Gagal Update: " + e.getMessage());
 }
     }//GEN-LAST:event_btn_simpanActionPerformed
@@ -306,12 +298,12 @@ public class Aspirasi1 extends javax.swing.JFrame {
         
         cb_status.setSelectedItem(tbAspirasi.getValueAt(i, 5).toString());
         
-        try {
-            java.util.Date date = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(tbAspirasi.getValueAt(i, 6).toString());
-            txt_tanggal.setDate(date);
-        } catch (Exception e) {
-            txt_tanggal.setDate(null);
-        }
+//        try {
+//            java.util.Date date = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(tbAspirasi.getValueAt(i, 6).toString());
+//            txt_tanggal.setDate(date);
+//        } catch (Exception e) {
+//            txt_tanggal.setDate(null);
+//        }
     }
 
 
@@ -339,7 +331,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
     txt_id.setText("");           
     txt_nik.setText("");         
     txt_nama.setText("");         
-    txt_tanggal.setDate(null);    
+    
     txt_isi.setText("");          
     cb_status.setSelectedIndex(0); 
     txt_cari.setText("");         
@@ -348,7 +340,7 @@ public class Aspirasi1 extends javax.swing.JFrame {
     txt_nik.setEditable(false); // Admin biasanya tidak boleh edit identitas
     txt_nama.setEditable(false);
     txt_isi.setEditable(false);
-    txt_tanggal.setEnabled(false);
+   
     
     // Kategori tetap dikunci (false)
     cb_kategori.setEnabled(false); 
@@ -457,7 +449,6 @@ public class Aspirasi1 extends javax.swing.JFrame {
     private javax.swing.JTextArea txt_isi;
     private javax.swing.JTextField txt_nama;
     private javax.swing.JTextField txt_nik;
-    private com.toedter.calendar.JDateChooser txt_tanggal;
     // End of variables declaration//GEN-END:variables
   private void tampilkan_data() {
     DefaultTableModel model = new DefaultTableModel();
@@ -684,7 +675,7 @@ try {
     txt_id.setText("");           
     txt_nik.setText("");         
     txt_nama.setText("");         
-    txt_tanggal.setDate(null);    
+   
     txt_isi.setText("");          
     cb_status.setSelectedIndex(0); 
     
@@ -693,12 +684,8 @@ try {
     txt_nik.setEditable(false);
     txt_nama.setEditable(false);
     txt_isi.setEditable(false);
-    txt_tanggal.setEnabled(false);
+   
 }
 
-    private void setTanggalHariIni() {
-    txt_tanggal.setDate(new Date());
-    txt_tanggal.getDateEditor().setEnabled(false);
-    txt_tanggal.getCalendarButton().setEnabled(false);
-}
+
 }

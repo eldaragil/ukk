@@ -46,10 +46,10 @@ Connection conn = null;
 
         jPanel1 = new javax.swing.JPanel();
         usernameTxt = new javax.swing.JTextField();
-        passwordTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        passwordTxt = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,6 +57,7 @@ Connection conn = null;
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usernameTxt.setBackground(new java.awt.Color(0,0,0,0));
+        usernameTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         usernameTxt.setBorder(null);
         usernameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,15 +65,6 @@ Connection conn = null;
             }
         });
         jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 470, 670, 70));
-
-        passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
-        passwordTxt.setBorder(null);
-        passwordTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTxtActionPerformed(evt);
-            }
-        });
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 620, 670, 70));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -103,6 +95,11 @@ Connection conn = null;
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1690, 250, 70, 60));
 
+        passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
+        passwordTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        passwordTxt.setBorder(null);
+        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 610, 680, 80));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/Login.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
@@ -123,10 +120,6 @@ Connection conn = null;
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTxtActionPerformed
-
-    private void passwordTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTxtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -236,7 +229,7 @@ if (usernameTxt.getText().isEmpty() || passwordTxt.getText().isEmpty()) {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField passwordTxt;
+    private javax.swing.JPasswordField passwordTxt;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
 }

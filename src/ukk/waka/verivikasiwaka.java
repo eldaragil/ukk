@@ -67,6 +67,8 @@ public class verivikasiwaka extends javax.swing.JFrame {
         setLocationRelativeTo(null);// membuat tengah form
         setTanggalHariIni();
         conn = Koneksi.Koneksi.KoneksiDB(); //javaConnect = nama file || Connection = nama method
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
         
         //memberi penamaan pada judul kolom ; 

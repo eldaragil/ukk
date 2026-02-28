@@ -33,6 +33,8 @@ public class menuPelapor extends javax.swing.JFrame {
      */
     public menuPelapor() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**

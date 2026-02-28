@@ -368,9 +368,12 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="terimakasih"/>
-                <StringItem index="1" value="diterapkan"/>
+              <StringArray count="5">
+                <StringItem index="0" value="Hardware PC Lab"/>
+                <StringItem index="1" value="Software &amp; Library"/>
+                <StringItem index="2" value="Jaringan &amp; Internet"/>
+                <StringItem index="3" value="Sarana Ruang Praktik"/>
+                <StringItem index="4" value="Kelistrikan &amp; Kabel"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

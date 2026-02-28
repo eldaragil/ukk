@@ -44,6 +44,8 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
     public RiwayatWaka1() {
         initComponents();
         load_riwayat();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     
     }
     
@@ -418,37 +420,57 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
     private void btn_cetak_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetak_allActionPerformed
         // TODO add your handling code here:                                            
      // 1. Pastikan koneksi tidak null
-        Connection conn = Koneksi.Koneksi.KoneksiDB(); 
-        if (conn == null) {
-            JOptionPane.showMessageDialog(null, "Koneksi Database Gagal!");
-            return;
-        }
-        
-    String sql = "SELECT\n" +
-"     aspirasi.`id_aspirasi` AS aspirasi_id_aspirasi,\n" +
-"     aspirasi.`nik` AS aspirasi_nik,\n" +
-"     aspirasi.`nama` AS aspirasi_nama,\n" +
-"     aspirasi.`isi_aspirasi` AS aspirasi_isi_aspirasi,\n" +
-"     aspirasi.`status` AS aspirasi_status,\n" +
-"     aspirasi.`tanggal` AS aspirasi_tanggal\n" + // Kolom feedback dihapus dari sini
-"FROM\n" +
-"     `aspirasi` aspirasi";
+  Connection conn = Koneksi.Koneksi.KoneksiDB(); 
+if (conn == null) {
+    JOptionPane.showMessageDialog(null, "Koneksi Database Gagal!");
+    return;
+}
+
+String sql = "SELECT " +
+" pengaduan.`id_pengaduan` AS pengaduan_id_pengaduan, " +
+" pengaduan.`nik` AS pengaduan_nik, " +
+" pengaduan.`tgl_pengaduan` AS pengaduan_tgl_pengaduan, " +
+" pengaduan.`isi_laporan` AS pengaduan_isi_laporan, " +
+" pengaduan.`nama` AS pengaduan_nama, " +
+" pengaduan.`foto` AS pengaduan_foto, " +
+" pengaduan.`lokasi` AS pengaduan_lokasi, " +
+" pengaduan.`Kategori` AS pengaduan_Kategori, " +
+" pengaduan.`status` AS pengaduan_status, " +
+" tanggapan.`id_tanggapan` AS tanggapan_id_tanggapan, " +
+" tanggapan.`nik` AS tanggapan_nik, " +
+" tanggapan.`nama` AS tanggapan_nama, " +
+" tanggapan.`isi_pengaduan` AS tanggapan_isi_pengaduan, " +
+" tanggapan.`feedback` AS tanggapan_feedback, " +
+" tanggapan.`status` AS tanggapan_status, " +
+" tanggapan.`tanggal` AS tanggapan_tanggal, " +
+" tanggapan.`foto` AS tanggapan_foto, " +
+" tanggapan.`id_pengaduan` AS tanggapan_id_pengaduan, " +
+" tanggapan.`tgl_tang` AS tanggapan_tgl_tang, " +
+" tanggapan.`kategori` AS tanggapan_kategori, " +
+" tanggapan.`lokasi` AS tanggapan_lokasi, " +
+" tanggapan.`id_petugas` AS tanggapan_id_petugas " +
+"FROM pengaduan " +
+"INNER JOIN tanggapan ON pengaduan.`id_pengaduan` = tanggapan.`id_pengaduan`";
+
 try {
-     pst = conn.prepareStatement(sql);   // Buat PreparedStatement dengan query
-    ResultSet rp = pst.executeQuery(); 
-    JasperPrint jasperPrint;
+
+    PreparedStatement pst = conn.prepareStatement(sql);
+    ResultSet rp = pst.executeQuery();
+
     JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
-    JasperReport jasperReport = JasperCompileManager.compileReport("D:\\buiza\\ukk\\src\\ukk\\ReportUKK\\laporan_aspirasi.jrxml");
-    jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
-    JRViewer aViewer = new JRViewer(jasperPrint);
-    JDialog viewer = new JDialog();
-    viewer.setTitle(". laporan Report : .");
-    viewer.setAlwaysOnTop (true);
-    viewer.getContentPane().add(aViewer);
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    viewer.setBounds (0, 0, screenSize.width, screenSize.height);
+
+    JasperReport jasperReport = JasperCompileManager.compileReport(
+            "D:/buiza/ukk/src/report/LAWAKALL.jrxml");
+
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
+
+    // FULL SCREEN VIEWER
+    JasperViewer viewer = new JasperViewer(jasperPrint, false);
+    viewer.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+    viewer.setFitPageZoomRatio();
     viewer.setVisible(true);
-}  catch (Exception e) {
+
+} catch (Exception e) {
     JOptionPane.showMessageDialog(null, "Laporan gak ada: " + e.getMessage());
     e.printStackTrace();
 }

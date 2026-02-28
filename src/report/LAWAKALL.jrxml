@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46f21385-8ee5-44ed-ac99-a6bcdab93848">
+	<property name="ireport.zoom" value="1.2100000000000053"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     pengaduan.`id_pengaduan` AS pengaduan_id_pengaduan,
+     pengaduan.`nik` AS pengaduan_nik,
+     pengaduan.`tgl_pengaduan` AS pengaduan_tgl_pengaduan,
+     pengaduan.`isi_laporan` AS pengaduan_isi_laporan,
+     pengaduan.`nama` AS pengaduan_nama,
+     pengaduan.`foto` AS pengaduan_foto,
+     pengaduan.`lokasi` AS pengaduan_lokasi,
+     pengaduan.`Kategori` AS pengaduan_Kategori,
+     pengaduan.`status` AS pengaduan_status,
+     tanggapan.`id_tanggapan` AS tanggapan_id_tanggapan,
+     tanggapan.`nik` AS tanggapan_nik,
+     tanggapan.`nama` AS tanggapan_nama,
+     tanggapan.`isi_pengaduan` AS tanggapan_isi_pengaduan,
+     tanggapan.`feedback` AS tanggapan_feedback,
+     tanggapan.`status` AS tanggapan_status,
+     tanggapan.`tanggal` AS tanggapan_tanggal,
+     tanggapan.`foto` AS tanggapan_foto,
+     tanggapan.`id_pengaduan` AS tanggapan_id_pengaduan,
+     tanggapan.`tgl_tang` AS tanggapan_tgl_tang,
+     tanggapan.`kategori` AS tanggapan_kategori,
+     tanggapan.`lokasi` AS tanggapan_lokasi,
+     tanggapan.`id_petugas` AS tanggapan_id_petugas
+FROM
+     `pengaduan` pengaduan INNER JOIN `tanggapan` tanggapan ON pengaduan.`id_pengaduan` = tanggapan.`id_pengaduan`]]>
+	</queryString>
+	<field name="pengaduan_id_pengaduan" class="java.lang.Integer"/>
+	<field name="pengaduan_nik" class="java.lang.String"/>
+	<field name="pengaduan_tgl_pengaduan" class="java.sql.Date"/>
+	<field name="pengaduan_isi_laporan" class="java.lang.String"/>
+	<field name="pengaduan_nama" class="java.lang.String"/>
+	<field name="pengaduan_foto" class="java.lang.String"/>
+	<field name="pengaduan_lokasi" class="java.lang.String"/>
+	<field name="pengaduan_Kategori" class="java.lang.String"/>
+	<field name="pengaduan_status" class="java.lang.String"/>
+	<field name="tanggapan_id_tanggapan" class="java.lang.Integer"/>
+	<field name="tanggapan_nik" class="java.lang.String"/>
+	<field name="tanggapan_nama" class="java.lang.String"/>
+	<field name="tanggapan_isi_pengaduan" class="java.lang.String"/>
+	<field name="tanggapan_feedback" class="java.lang.String"/>
+	<field name="tanggapan_status" class="java.lang.String"/>
+	<field name="tanggapan_tanggal" class="java.sql.Date"/>
+	<field name="tanggapan_foto" class="java.lang.String"/>
+	<field name="tanggapan_id_pengaduan" class="java.lang.Integer"/>
+	<field name="tanggapan_tgl_tang" class="java.sql.Date"/>
+	<field name="tanggapan_kategori" class="java.lang.String"/>
+	<field name="tanggapan_lokasi" class="java.lang.String"/>
+	<field name="tanggapan_id_petugas" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="15" width="427" height="20" uuid="37238757-9851-4849-bbd3-ea5323fa4a0f"/>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS PENDIDIKAN KABUPATEN BOJONEGORO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="36" width="321" height="20" uuid="911c00d7-f3a7-463e-9fcd-66bbe1f62f39"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEKOLAH MENENGAH KEJURUAN NEGERI 4 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="53" width="397" height="38" uuid="36e54377-dbb7-40e5-a87f-3edab73e6d64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Surabaya, Sukowati, Kec. Kapas, Kabupaten Bojonegoro, Jawa Timur 62181
+Telepon: (0353) 892418]]></text>
+			</staticText>
+			<image>
+				<reportElement x="51" y="6" width="77" height="77" uuid="0151eb47-f74e-4448-9b66-bf34f84f472b"/>
+				<imageExpression><![CDATA["D:/buiza/ukk/src/report/LOGOSMKHEBATJOS.jpg.jpeg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="676" y="3" width="98" height="80" uuid="5a60566e-2ded-41ca-993d-613b7efb47f1"/>
+				<imageExpression><![CDATA["D:/buiza/ukk/src/report/LOGOJTIM.jpg.jpeg"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="46" y="89" width="700" height="1" uuid="0600e9ab-0a14-49fd-ae9a-d313586e8759"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="46" y="92" width="700" height="1" uuid="00a17603-e244-4c22-af5a-01fdf248e1ea"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="46" y="1" width="60" height="20" uuid="3e419360-f897-4e04-a233-f69f6cc80814"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="1" width="110" height="20" uuid="8b2a86fd-f3ca-4484-8a91-cd2659ca7598"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Isi Laporan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="1" width="100" height="20" uuid="6d8832cc-4a27-4f0e-96f1-97f12a31e1fc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Foto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="1" width="100" height="20" uuid="0d86d9b4-ee7d-432f-897d-2ee4300ca937"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="1" width="45" height="20" uuid="b4180bac-921b-4abf-b1c0-5b26d691c9ba"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="1" width="104" height="20" uuid="6f7f3cf9-06c4-49b7-85ca-aeda10c2225d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tgl Pengaduan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="1" width="93" height="20" uuid="c87ee32b-f261-4196-bd91-3925f502b3b2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lokasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="613" y="1" width="100" height="20" uuid="f455b2da-f85e-42e8-a555-5fd95fa6a717"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kategori]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="713" y="0" width="89" height="20" uuid="ec3ae449-a88b-4659-a2ed-ff5152da933f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="1" width="45" height="20" uuid="65824119-f1e1-4830-8489-a555af868652"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_id_pengaduan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="46" y="1" width="60" height="20" uuid="dc47b36a-7f0e-47d3-a67c-8ea0d15c7982"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_nik}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="1" width="110" height="20" uuid="55bf0cba-127d-485f-9e33-dd35cda1ab48"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_isi_laporan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="1" width="104" height="20" uuid="58d80968-6ca4-4515-9f67-501555491494"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_tgl_pengaduan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="1" width="100" height="20" uuid="4f2f23a7-7897-48bd-8649-c4f4c4202c90"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="1" width="93" height="20" uuid="59336898-2969-4007-81d9-16ea537ae72b"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_lokasi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="1" width="100" height="20" uuid="a91c96aa-dc8b-4404-a1f7-237f4483bfe8"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_foto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="613" y="1" width="100" height="20" uuid="67ac5e9c-c3e8-4650-b9cc-a0b973e04d0e"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_Kategori}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="713" y="1" width="89" height="20" uuid="5a2266ac-8820-4315-9a39-94b9e98a7c84"/>
+				<textFieldExpression><![CDATA[$F{pengaduan_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -21,6 +21,8 @@ public class menulogin extends javax.swing.JFrame {
      */
     public menulogin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -55,7 +57,7 @@ public class menulogin extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 770, 370, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/menu LOGIN NEW.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/menu LOGIN.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
         pack();

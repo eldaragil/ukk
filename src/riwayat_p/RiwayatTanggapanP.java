@@ -31,6 +31,8 @@ public class RiwayatTanggapanP extends javax.swing.JFrame {
 
     public RiwayatTanggapanP() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
         model = new DefaultTableModel();
         model.addColumn("ID Tanggapan");
@@ -430,9 +432,8 @@ private void cariData() {
     model.setRowCount(0);
 
     try {
-        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        String tglDari = df.format(jDateChooser1.getDate());
-        String tglSampai = df.format(jDateChooser2.getDate());
+        java.sql.Date sqlDari = new java.sql.Date(jDateChooser1.getDate().getTime());
+        java.sql.Date sqlSampai = new java.sql.Date(jDateChooser2.getDate().getTime());
 
         Connection conn = Koneksi.KoneksiDB();
         PreparedStatement pst;
@@ -442,22 +443,22 @@ private void cariData() {
 
             String sql = "SELECT * FROM tanggapan WHERE DATE(tgl_tang) BETWEEN ? AND ?";
             pst = conn.prepareStatement(sql);
-            pst.setString(1, tglDari);
-            pst.setString(2, tglSampai);
+            pst.setDate(1, sqlDari);
+            pst.setDate(2, sqlSampai);
 
         } else {
 
             String sql = "SELECT * FROM tanggapan WHERE nik = ? AND DATE(tgl_tang) BETWEEN ? AND ?";
             pst = conn.prepareStatement(sql);
             pst.setString(1, session.getNik());
-            pst.setString(2, tglDari);
-            pst.setString(3, tglSampai);
+            pst.setDate(2, sqlDari);
+            pst.setDate(3, sqlSampai);
         }
 
         rs = pst.executeQuery();
 
         while (rs.next()) {
-            String[] data = {
+            model.addRow(new Object[]{
                 rs.getString("id_tanggapan"),
                 rs.getString("id_pengaduan"),
                 rs.getString("nik"),
@@ -471,9 +472,7 @@ private void cariData() {
                 rs.getString("status"),
                 rs.getString("feedback"),
                 rs.getString("foto")
-            };
-
-            model.addRow(data);
+            });
         }
 
     } catch (Exception e) {

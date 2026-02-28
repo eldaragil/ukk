@@ -21,7 +21,9 @@ import Koneksi.Koneksi;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.InputStream;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,12 +34,15 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
     private final DefaultTableModel model;
 
     public RiwayatTanggapanAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
         model = new DefaultTableModel();
         model.addColumn("ID Tanggapan");
@@ -134,6 +139,11 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(0,0,0,0));
         jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 950, 120, 40));
 
         jButton5.setBackground(new java.awt.Color(0,0,0,0));
@@ -177,7 +187,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1920, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 2010, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,79 +334,217 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_tabel_pengaduanMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String sql = "SELECT " +
-            "pengaduan.id_pengaduan AS pengaduan_id_pengaduan, " +
-            "pengaduan.nik AS pengaduan_nik, " +
-            "pengaduan.tgl_pengaduan AS pengaduan_tgl_pengaduan, " +
-            "pengaduan.isi_laporan AS pengaduan_isi_laporan, " +
-            "pengaduan.nama AS pengaduan_nama, " +
-            "pengaduan.foto AS pengaduan_foto, " +
-            "pengaduan.lokasi AS pengaduan_lokasi, " +
-            "pengaduan.Kategori AS pengaduan_Kategori, " +
-            "pengaduan.status AS pengaduan_status, " +
-            "tanggapan.id_tanggapan AS tanggapan_id_tanggapan, " +
-            "tanggapan.nik AS tanggapan_nik, " +
-            "tanggapan.nama AS tanggapan_nama, " +
-            "tanggapan.isi_pengaduan AS tanggapan_isi_pengaduan, " +
-            "tanggapan.feedback AS tanggapan_feedback, " +
-            "tanggapan.status AS tanggapan_status, " +
-            "tanggapan.tanggal AS tanggapan_tanggal, " +
-            "tanggapan.foto AS tanggapan_foto, " +
-            "tanggapan.id_pengaduan AS tanggapan_id_pengaduan, " +
-            "tanggapan.tgl_tang AS tanggapan_tgl_tang, " +
-            "tanggapan.kategori AS tanggapan_kategori, " +
-            "tanggapan.lokasi AS tanggapan_lokasi, " +
-            "tanggapan.id_petugas AS tanggapan_id_petugas " +
-            "FROM pengaduan " +
-            "LEFT JOIN tanggapan ON pengaduan.id_pengaduan = tanggapan.id_pengaduan " +
-            "ORDER BY pengaduan.tgl_pengaduan DESC";
+       String sql = "SELECT " +
+        "pengaduan.id_pengaduan AS pengaduan_id_pengaduan, " +
+        "pengaduan.nik AS pengaduan_nik, " +
+        "pengaduan.tgl_pengaduan AS pengaduan_tgl_pengaduan, " +
+        "pengaduan.isi_laporan AS pengaduan_isi_laporan, " +
+        "pengaduan.nama AS pengaduan_nama, " +
+        "pengaduan.foto AS pengaduan_foto, " +
+        "pengaduan.lokasi AS pengaduan_lokasi, " +
+        "pengaduan.Kategori AS pengaduan_Kategori, " +
+        "pengaduan.status AS pengaduan_status, " +
+        "tanggapan.id_tanggapan AS tanggapan_id_tanggapan, " +
+        "tanggapan.nik AS tanggapan_nik, " +
+        "tanggapan.nama AS tanggapan_nama, " +
+        "tanggapan.isi_pengaduan AS tanggapan_isi_pengaduan, " +
+        "tanggapan.feedback AS tanggapan_feedback, " +
+        "tanggapan.status AS tanggapan_status, " +
+        "tanggapan.tanggal AS tanggapan_tanggal, " +
+        "tanggapan.foto AS tanggapan_foto, " +
+        "tanggapan.id_pengaduan AS tanggapan_id_pengaduan, " +
+        "tanggapan.tgl_tang AS tanggapan_tgl_tang, " +
+        "tanggapan.kategori AS tanggapan_kategori, " +
+        "tanggapan.lokasi AS tanggapan_lokasi, " +
+        "tanggapan.id_petugas AS tanggapan_id_petugas " +
+        "FROM pengaduan " +
+        "INNER JOIN tanggapan ON pengaduan.id_pengaduan = tanggapan.id_pengaduan " +
+        "WHERE LOWER(pengaduan.status) = 'tertanggapi' " +
+        "ORDER BY pengaduan.tgl_pengaduan DESC";
 
-    try {
+try {
 
-        Connection conn = Koneksi.KoneksiDB();
-        PreparedStatement pst = conn.prepareStatement(sql);
-        ResultSet rp = pst.executeQuery();
+    Connection conn = Koneksi.KoneksiDB();
+    PreparedStatement pst = conn.prepareStatement(sql);
+    ResultSet rp = pst.executeQuery();
 
-        JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
+    JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
 
-        JasperReport jasperReport = JasperCompileManager.compileReport(
-                "D:/buiza/ukk/src/report/LAPENGALL.jrxml"
-        );
+    JasperReport jasperReport = JasperCompileManager.compileReport(
+            "D:/buiza/ukk/src/report/LAPENGALL.jrxml"
+    );
 
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
 
-        JRViewer viewer = new JRViewer(jasperPrint);
-        JDialog dialog = new JDialog();
-        dialog.setTitle("Laporan Data Pengaduan & Tanggapan");
-        dialog.setAlwaysOnTop(true);
-        dialog.getContentPane().add(viewer);
+    JRViewer viewer = new JRViewer(jasperPrint);
+    JDialog dialog = new JDialog();
+    dialog.setTitle("Laporan Data Pengaduan & Tanggapan");
+    dialog.setAlwaysOnTop(true);
+    dialog.getContentPane().add(viewer);
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        dialog.setBounds(0, 0, screenSize.width, screenSize.height);
-        dialog.setVisible(true);
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    dialog.setBounds(0, 0, screenSize.width, screenSize.height);
+    dialog.setVisible(true);
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
-        e.printStackTrace();
-    }
-
-   
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
+    e.printStackTrace();
+}
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-    System.out.println("Tombol diklik!"); // Ini untuk ngetes di panel Output bawah
-    
-    if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
-        JOptionPane.showMessageDialog(this, "Harap pilih kedua tanggal filter!");
-    } else {
-        cariData(); 
-    }
+     try {
+        if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Pilih tanggal terlebih dahulu!");
+            return;
+        }
 
+        // Kosongkan tabel dulu
+        DefaultTableModel model = (DefaultTableModel) tabel_pengaduan.getModel();
+        model.setRowCount(0);
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String dari = df.format(jDateChooser1.getDate());
+        String sampai = df.format(jDateChooser2.getDate());
+
+        Connection conn = Koneksi.KoneksiDB();
+
+        String sql = "SELECT tanggapan.*, pengaduan.tgl_pengaduan " +
+                     "FROM tanggapan " +
+                     "INNER JOIN pengaduan ON tanggapan.id_pengaduan = pengaduan.id_pengaduan " +
+                     "WHERE LOWER(tanggapan.status) = 'tertanggapi' " +
+                     "AND DATE(tanggapan.tgl_tang) BETWEEN ? AND ? " +
+                     "ORDER BY tanggapan.tgl_tang DESC";
+
+        PreparedStatement pst = conn.prepareStatement(sql);
+        pst.setString(1, dari);
+        pst.setString(2, sampai);
+
+        ResultSet rs = pst.executeQuery();
+
+        boolean dataAda = false;
+
+        while (rs.next()) {
+            dataAda = true;
+
+            Object[] row = {
+                rs.getString("id_tanggapan"),
+                rs.getString("id_pengaduan"),
+                rs.getString("nik"),
+                rs.getString("nama"),
+                rs.getString("tanggal"),      // Tanggal Pengaduan
+                rs.getString("tgl_tang"),     // Tanggal Tanggapan
+                rs.getString("id_petugas"),   // Kalau belum ada nama petugas
+                rs.getString("isi_pengaduan"),
+                rs.getString("kategori"),
+                rs.getString("lokasi"),
+                rs.getString("status"),
+                rs.getString("feedback"),
+                rs.getString("foto")
+            };
+
+            model.addRow(row);
+        }
+
+        if (!dataAda) {
+            JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error Filter: " + e.getMessage());
+        e.printStackTrace();
+    }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+                                           
+    try {
+
+        // 1️⃣ Cek tanggal
+        if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Pilih tanggal terlebih dahulu!");
+            return;
+        }
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String dari = df.format(jDateChooser1.getDate());
+        String sampai = df.format(jDateChooser2.getDate());
+
+        Connection conn = Koneksi.KoneksiDB();
+
+        // 2️⃣ QUERY FINAL
+        String sql = "SELECT " +
+             "p.id_pengaduan AS pengaduan_id_pengaduan, " +
+             "p.nik AS pengaduan_nik, " +
+             "p.tgl_pengaduan AS pengaduan_tgl_pengaduan, " +
+             "p.isi_laporan AS pengaduan_isi_laporan, " +
+             "p.nama AS pengaduan_nama, " +
+             "p.foto AS pengaduan_foto, " +
+             "p.lokasi AS pengaduan_lokasi, " +
+             "p.Kategori AS pengaduan_Kategori, " +
+             "p.status AS pengaduan_status, " +
+
+             "t.id_tanggapan AS tanggapan_id_tanggapan, " +
+             " t.id_pengaduan AS tanggapan_id_pengaduan," +
+             "t.nik AS tanggapan_nik, " +
+             "t.nama AS tanggapan_nama, " +
+             "t.isi_pengaduan AS tanggapan_isi_pengaduan, " +
+             "t.feedback AS tanggapan_feedback, " +
+             "t.status AS tanggapan_status, " +
+             "t.tgl_tang AS tanggapan_tanggal, " +
+             "t.tgl_tang AS tanggapan_tgl_tang, " +   // 🔥 INI YANG PENTING
+             "t.foto AS tanggapan_foto, " +
+             "t.kategori AS tanggapan_kategori, " +
+             "t.lokasi AS tanggapan_lokasi, " +
+             "t.id_petugas AS tanggapan_id_petugas " +
+
+             "FROM tanggapan t " +
+             "INNER JOIN pengaduan p ON t.id_pengaduan = p.id_pengaduan " +
+             "WHERE t.status = 'tertanggapi' " +
+             "AND DATE(t.tgl_tang) BETWEEN ? AND ? " +
+             "ORDER BY t.tgl_tang DESC";
+
+        PreparedStatement pst = conn.prepareStatement(sql);
+        pst.setString(1, dari);
+        pst.setString(2, sampai);
+
+        ResultSet rs = pst.executeQuery();
+
+        if (!rs.isBeforeFirst()) {
+            JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
+            return;
+        }
+
+        JRResultSetDataSource dataSource = new JRResultSetDataSource(rs);
+
+        // 3️⃣ LOAD & COMPILE JRXML (ANTI NULL ERROR)
+        InputStream reportStream = getClass()
+                .getClassLoader()
+                .getResourceAsStream("report/LAPENGALL.jrxml");
+
+        if (reportStream == null) {
+            JOptionPane.showMessageDialog(null, "File laporan tidak ditemukan!");
+            return;
+        }
+
+        JasperReport jr = JasperCompileManager.compileReport(reportStream);
+
+        JasperPrint jp = JasperFillManager.fillReport(jr, null, dataSource);
+
+        JasperViewer viewer = new JasperViewer(jp, false);
+        viewer.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH); // fullscreen
+        viewer.setFitPageZoomRatio(); // pas dengan halaman
+        viewer.setVisible(true);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
+        e.printStackTrace();
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,7 +604,9 @@ private void tampilData() {
 
     try {
         Connection conn = Koneksi.KoneksiDB();
-        String sql = "SELECT * FROM tanggapan ORDER BY id_tanggapan DESC";
+        String sql = "SELECT * FROM tanggapan "
+           + "WHERE status = 'tertanggapi' "
+           + "ORDER BY id_tanggapan ASC";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
 
@@ -499,7 +649,9 @@ private void cariData() {
         String tglSampai = df.format(jDateChooser2.getDate());
 
         Connection conn = Koneksi.KoneksiDB();
-        String sql = "SELECT * FROM tanggapan WHERE DATE(tgl_pengaduan) BETWEEN ? AND ?";
+        String sql = "SELECT * FROM tanggapan "
+           + "WHERE DATE(tgl_pengaduan) BETWEEN ? AND ? "
+           + "AND status = 'tertanggapi'";
         
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1, tglDari);

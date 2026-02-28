@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2cde982d-1fbf-4e9a-b499-444da60de223">
+	<property name="ireport.zoom" value="1.0000000000000029"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     aspirasi.`id_aspirasi` AS aspirasi_id_aspirasi,
+     aspirasi.`nik` AS aspirasi_nik,
+     aspirasi.`nama` AS aspirasi_nama,
+     aspirasi.`isi_aspirasi` AS aspirasi_isi_aspirasi,
+     aspirasi.`kategori` AS aspirasi_kategori,
+     aspirasi.`status` AS aspirasi_status,
+     aspirasi.`tanggal` AS aspirasi_tanggal,
+     aspirasi.`tanggal_tang` AS aspirasi_tanggal_tang
+FROM
+     `aspirasi` aspirasi]]>
+	</queryString>
+	<field name="aspirasi_id_aspirasi" class="java.lang.Integer"/>
+	<field name="aspirasi_nik" class="java.lang.String"/>
+	<field name="aspirasi_nama" class="java.lang.String"/>
+	<field name="aspirasi_isi_aspirasi" class="java.lang.String"/>
+	<field name="aspirasi_kategori" class="java.lang.String"/>
+	<field name="aspirasi_status" class="java.lang.String"/>
+	<field name="aspirasi_tanggal" class="java.sql.Date"/>
+	<field name="aspirasi_tanggal_tang" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="101" y="8" width="604" height="36" uuid="38ad7971-c052-4a4c-a08b-7962883e215a"/>
+				<textElement>
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS PENDIDIKAN KABUPATEN BOJONEGORO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="36" width="352" height="20" uuid="4a75f910-d71f-47cc-bdfa-72e691a60c6b"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEKOLAH MENENGAH KEJURUAN NEGERI 4 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="56" width="492" height="32" uuid="7350ca63-d412-4283-8fe4-5dd20e18899a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Surabaya, Sukowati, Kec. Kapas, Kabupaten Bojonegoro, Jawa Timur 62181
+Telepon: (0353) 892418]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="39" height="18" forecolor="#000000" uuid="37ca14fc-92c3-4484-a01d-2060f80d600c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="39" y="0" width="99" height="18" forecolor="#000000" uuid="b5224b86-820d-43ea-8e7b-4abc788b2982"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="0" width="99" height="18" forecolor="#000000" uuid="52197e90-ea67-4bd5-8e67-23c8f1b752a3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="0" width="99" height="18" forecolor="#000000" uuid="6ad30510-58ef-49f3-99df-e8036e8fb64a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Isi Aspirasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="373" y="0" width="99" height="18" forecolor="#000000" uuid="c02cf4f1-82f0-48ff-86e4-8dc14f531ca5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kategori]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="472" y="0" width="99" height="18" forecolor="#000000" uuid="0ceb2978-6505-4604-a4ab-28985533737b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="571" y="0" width="99" height="18" forecolor="#000000" uuid="91ddf018-8b21-4883-b32e-72dea3de31e3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="672" y="0" width="130" height="18" forecolor="#000000" uuid="c4429cb9-f89d-491c-b898-dff5b7a13523"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Tanggapan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="802" height="1" uuid="263aef85-ec60-4db9-85e8-bc83311c4cdb"/>
+			</line>
+			<line>
+				<reportElement x="0" y="17" width="802" height="1" uuid="058381a1-b4a7-436a-8116-14325ba220a5"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="7806eaf5-eee8-4f94-a33e-67f587c0d22e"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="39" height="18" uuid="accad01b-008e-40e9-9932-36a510a25bad"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_id_aspirasi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="39" y="0" width="99" height="18" uuid="beb69844-9743-4a24-ae68-b2d29a521a52"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_nik}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="138" y="0" width="99" height="18" uuid="9faafd4a-74b6-499a-b8e4-1472d3be5b96"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_nama}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="237" y="0" width="99" height="18" uuid="c028f12f-e43a-4426-9d11-b125f4959066"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_isi_aspirasi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="373" y="0" width="99" height="18" uuid="009077e2-2dfc-4b2a-960b-c75d5c04165e"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_kategori}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="472" y="0" width="99" height="18" uuid="7ce569bd-208d-4ae3-8d86-9e4f545b7a0b"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_status}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="571" y="0" width="99" height="18" uuid="070b8a9d-ad85-4603-b827-5f3aeb1788da"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_tanggal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="672" y="0" width="125" height="18" uuid="64c2d680-e546-4e67-8729-c6bc671e69ab"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aspirasi_tanggal_tang}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="be2d9933-604c-4398-b692-fc2c20a9ee94"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="d5f2d70b-6279-40c7-9167-c98e1d4f37b1"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="2db58f90-8664-4bd9-9977-60b485856ad1"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="2acd4dd3-5fa8-4472-a9c1-58e4ffc5a479"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="f755a094-fb75-478c-8300-19b06588ff56"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
