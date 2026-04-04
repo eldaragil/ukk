@@ -64,7 +64,7 @@ public class register extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         txt_password = new javax.swing.JPasswordField();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrasi Masyarakat");
@@ -79,7 +79,7 @@ public class register extends javax.swing.JFrame {
                 txt_nikActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 440, 610, 80));
+        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 590, 40));
 
         txt_nama.setBackground(new java.awt.Color(0,0,0,0));
         txt_nama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -89,7 +89,7 @@ public class register extends javax.swing.JFrame {
                 txt_namaActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 590, 610, 80));
+        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 600, 40));
 
         jButton4.setBackground(new java.awt.Color(0,0,0,0));
         jButton4.setBorder(null);
@@ -98,7 +98,7 @@ public class register extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 840, 710, 50));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, 180, 60));
 
         jButton5.setBackground(new java.awt.Color(0,0,0,0));
         jButton5.setBorder(null);
@@ -107,16 +107,15 @@ public class register extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1690, 260, 70, 50));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 170, 60));
 
         txt_password.setBackground(new java.awt.Color(0,0,0,0));
         txt_password.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_password.setBorder(null);
-        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 730, 610, 80));
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 580, 40));
 
-        jLabel8.setBackground(new java.awt.Color(0,0,0,0));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/regisster (1).png"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1090));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ukk/login_register/regsitrasi 2.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,7 +211,7 @@ public class register extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_nama;
     private javax.swing.JTextField txt_nik;

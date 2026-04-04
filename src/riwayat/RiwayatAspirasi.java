@@ -6,6 +6,7 @@
 package riwayat;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,7 +62,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
     ResultSet res;
 
     // 🔥 Tanpa session → selalu tampil semua
-    String sql = "SELECT * FROM aspirasi ORDER BY tanggal DESC";
+    String sql = "SELECT * FROM aspirasi WHERE status IN ('terimakasih','diterapkan') ORDER BY tanggal DESC";
     pst = conn.prepareStatement(sql);
 
     res = pst.executeQuery();
@@ -109,7 +110,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
         btn_cetak_all = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,7 +129,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_riwayat);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 1620, 570));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 1290, 400));
 
         txt_cari_nama.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari_nama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -143,19 +144,19 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
                 txt_cari_namaKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_cari_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 740, 50));
+        jPanel1.add(txt_cari_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 90, 190, 40));
 
         cb_kategori.setBackground(new java.awt.Color(0,0,0,0));
         cb_kategori.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nama", "Kategori" }));
         cb_kategori.setBorder(null);
-        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 180, 210, 50));
+        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 80, 130, 40));
 
         tgl_dari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(tgl_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 280, 30));
+        jPanel1.add(tgl_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 250, 40));
 
         tgl_sampai.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(tgl_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 250, 30));
+        jPanel1.add(tgl_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 230, 40));
 
         btn_filter.setBackground(new java.awt.Color(0,0,0,0));
         btn_filter.addActionListener(new java.awt.event.ActionListener() {
@@ -163,11 +164,11 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
                 btn_filterActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 240, 150, 50));
+        jPanel1.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 130, 50));
 
         lbl_total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_total.setText("TOTAL DATA :");
-        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 960, -1, -1));
+        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, -1, -1));
 
         btn_detail.setBackground(new java.awt.Color(0,0,0,0));
         btn_detail.setBorder(null);
@@ -176,7 +177,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
                 btn_detailActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 950, 120, 40));
+        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 160, 40));
 
         btn_cetak_filter.setBackground(new java.awt.Color(0,0,0,0));
         btn_cetak_filter.setBorder(null);
@@ -185,7 +186,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
                 btn_cetak_filterActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cetak_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 950, 120, 40));
+        jPanel1.add(btn_cetak_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 610, 170, 40));
 
         btn_cetak_all.setBackground(new java.awt.Color(0,0,0,0));
         btn_cetak_all.setBorder(null);
@@ -194,7 +195,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
                 btn_cetak_allActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cetak_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 950, 110, 40));
+        jPanel1.add(btn_cetak_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 610, 200, 50));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -203,7 +204,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 950, 110, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 620, 140, 40));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -212,21 +213,20 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 950, 120, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 610, 90, 50));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/riwayat aspirasi adm.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -2, 1930, 1080));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_neww/riwayat aspirasi (1).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 750));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1367, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -234,7 +234,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
 
     private void btn_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_filterActionPerformed
         // TODO add your handling code here :                                                                                  
-    if (tgl_dari.getDate() == null || tgl_sampai.getDate() == null) {
+if (tgl_dari.getDate() == null || tgl_sampai.getDate() == null) {
         JOptionPane.showMessageDialog(this, "Silakan pilih rentang tanggal!");
         return;
     }
@@ -318,7 +318,7 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
     JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
 
     JasperReport jasperReport = JasperCompileManager.compileReport(
-            "D:/buiza/ukk/src/report/aspirasi.jrxml"
+            "C:/Users/10/ukk-baruu/src/report/aspirasi.jrxml"
     );
 
     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
@@ -398,58 +398,56 @@ public class RiwayatAspirasi extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_cetak_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetak_allActionPerformed
-//           // TODO add your handling code here:                                            
-//     // 1. Pastikan koneksi tidak null
-//        Connection conn = Koneksi.Koneksi.KoneksiDB(); 
-//        if (conn == null) {
-//            JOptionPane.showMessageDialog(null, "Koneksi Database Gagal!");
-//            return;
-//        }
+
+    try {
+        // Query untuk semua data aspirasi tanpa filter
         String sql = "SELECT " +
-             "aspirasi.id_aspirasi AS aspirasi_id_aspirasi, " +
-             "aspirasi.nik AS aspirasi_nik, " +
-             "aspirasi.nama AS aspirasi_nama, " +
-             "aspirasi.isi_aspirasi AS aspirasi_isi_aspirasi, " +
-             "aspirasi.kategori AS aspirasi_kategori, " +
-             "aspirasi.status AS aspirasi_status, " +
-             "aspirasi.tanggal AS aspirasi_tanggal, " +
-             "aspirasi.tanggal_tang AS aspirasi_tanggal_tang " +
-             "FROM aspirasi aspirasi";
+                "id_aspirasi AS aspirasi_id_aspirasi, " +
+                "nik AS aspirasi_nik, " +
+                "nama AS aspirasi_nama, " +
+                "isi_aspirasi AS aspirasi_isi_aspirasi, " +
+                "kategori AS aspirasi_kategori, " +
+                "status AS aspirasi_status, " +
+                "tanggal AS aspirasi_tanggal, " +
+                "tanggal_tang AS aspirasi_tanggal_tang " +
+                "FROM aspirasi " +
+                "WHERE status IN ('terimakasih','diterapkan') " +
+                "ORDER BY tanggal ASC"; // Bisa diganti DESC jika mau terbaru di atas
 
-try {
+        Connection conn = Koneksi.Koneksi.KoneksiDB();
+        PreparedStatement pst = conn.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
 
-    Connection conn = Koneksi.Koneksi.KoneksiDB();
-    PreparedStatement pst = conn.prepareStatement(sql);
-    ResultSet rp = pst.executeQuery();
+        // Data untuk JasperReports
+        JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
 
-    JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
+        // Gunakan path relatif untuk .jrxml agar lebih aman
+        InputStream reportStream = getClass().getResourceAsStream("/report/aspirasi.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
 
-    JasperReport jasperReport = JasperCompileManager.compileReport(
-            "D:/buiza/ukk/src/report/aspirasi.jrxml"
-    );
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
 
-    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
+        // Tampilkan di JRViewer
+        JRViewer viewer = new JRViewer(jasperPrint);
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Laporan Semua Data Aspirasi");
+        dialog.setAlwaysOnTop(true);
+        dialog.getContentPane().add(viewer);
 
-    JRViewer viewer = new JRViewer(jasperPrint);
-    JDialog dialog = new JDialog();
-    dialog.setTitle("Laporan Data Aspirasi");
-    dialog.setAlwaysOnTop(true);
-    dialog.getContentPane().add(viewer);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        dialog.setBounds(0, 0, screenSize.width, screenSize.height);
+        dialog.setVisible(true);
 
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    dialog.setBounds(0, 0, screenSize.width, screenSize.height);
-    dialog.setVisible(true);
-
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
-    e.printStackTrace();
-}
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal Cetak Laporan: " + e.getMessage());
+        e.printStackTrace();
+    }
 
     
     }//GEN-LAST:event_btn_cetak_allActionPerformed
 
     private void txt_cari_namaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cari_namaKeyReleased
-        // TODO add your handling code here:                                        
+         // TODO add your handling code here:                                        
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("No");
     model.addColumn("Tanggal");
@@ -461,7 +459,7 @@ try {
     try {
         String cari = txt_cari_nama.getText();
         // Query tetap sama, mencari dari depan
-        String sql = "SELECT * FROM aspirasi WHERE (nama LIKE ? OR kategori LIKE ? OR isi_aspirasi LIKE ?) ORDER BY tanggal DESC";
+        String sql = "SELECT * FROM aspirasi WHERE (nama LIKE ? OR kategori LIKE ? OR isi_aspirasi LIKE ?) AND status IN ('terimakasih','diterapkan') ORDER BY tanggal DESC";
 
         java.sql.Connection conn = Koneksi.Koneksi.KoneksiDB();
         java.sql.PreparedStatement pst = conn.prepareStatement(sql);
@@ -539,7 +537,7 @@ try {
     private javax.swing.JComboBox<String> cb_kategori;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_total;

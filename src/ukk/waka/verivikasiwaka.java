@@ -173,16 +173,15 @@ public class verivikasiwaka extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jd_tglpengaduan.setBackground(new java.awt.Color(0,0,0,0));
         jd_tglpengaduan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(jd_tglpengaduan, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 400, 50));
+        jPanel1.add(jd_tglpengaduan, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 170, 220, 30));
 
         txt_isi.setBackground(new java.awt.Color(0,0,0,0));
         txt_isi.setColumns(20);
         txt_isi.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txt_isi.setRows(5);
         txt_isi.setBorder(null);
-        jPanel1.add(txt_isi, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 400, 130));
+        jPanel1.add(txt_isi, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 240, 220, 130));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
@@ -191,7 +190,7 @@ public class verivikasiwaka extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 890, 80, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 640, 120, 50));
 
         jButton7.setBackground(new java.awt.Color(0,0,0,0));
         jButton7.setBorder(null);
@@ -200,7 +199,7 @@ public class verivikasiwaka extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 890, 80, 40));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 640, 90, 50));
 
         jButton6.setBackground(new java.awt.Color(0,0,0,0));
         jButton6.setBorder(null);
@@ -209,7 +208,7 @@ public class verivikasiwaka extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1710, 220, 150, 50));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 130, 50));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -218,7 +217,7 @@ public class verivikasiwaka extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 890, 80, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, 110, 50));
 
         cmb_cari.setBackground(new java.awt.Color(0,0,0,0));
         cmb_cari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -229,15 +228,15 @@ public class verivikasiwaka extends javax.swing.JFrame {
                 cmb_cariActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(1570, 220, 110, 50));
+        jPanel1.add(cmb_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 150, 50));
 
         txt_cari.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_cari.setBorder(null);
-        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 220, 710, 50));
+        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 320, 50));
 
         lbl_foto.setBackground(new java.awt.Color(0,0,0,0));
-        jPanel1.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 670, 150, 190));
+        jPanel1.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 420, 140, 170));
 
         id.setEditable(false);
         id.setBackground(new java.awt.Color(0,0,0,0));
@@ -248,7 +247,7 @@ public class verivikasiwaka extends javax.swing.JFrame {
                 idActionPerformed(evt);
             }
         });
-        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 400, 50));
+        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, 220, 30));
 
         cmb_status.setBackground(new java.awt.Color(0,0,0,0));
         cmb_status.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -259,7 +258,7 @@ public class verivikasiwaka extends javax.swing.JFrame {
                 cmb_statusActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 590, 400, 50));
+        jPanel1.add(cmb_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 400, 220, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -279,10 +278,10 @@ public class verivikasiwaka extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 320, 1010, 650));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 630, 500));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/VERIFIKASI WAKA (1).png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/verifikasi pengaduan.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

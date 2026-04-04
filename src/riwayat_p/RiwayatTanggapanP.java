@@ -93,8 +93,8 @@ public class RiwayatTanggapanP extends javax.swing.JFrame {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 280, 40));
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 230, 40));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 190, 30));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 180, 30));
 
         tabel_pengaduan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,7 +114,7 @@ public class RiwayatTanggapanP extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_pengaduan);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 1580, 570));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1280, 510));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
@@ -123,7 +123,7 @@ public class RiwayatTanggapanP extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 950, 120, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 650, 120, 50));
 
         jButton6.setBackground(new java.awt.Color(0,0,0,0));
         jButton6.setBorder(null);
@@ -132,7 +132,7 @@ public class RiwayatTanggapanP extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 950, 120, 40));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, 140, 50));
 
         jButton7.setBackground(new java.awt.Color(0,0,0,0));
         jButton7.setBorder(null);
@@ -141,7 +141,7 @@ public class RiwayatTanggapanP extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 950, 110, 40));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 650, 110, 50));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -150,11 +150,11 @@ public class RiwayatTanggapanP extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 190, 140, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 90, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/riwayat tanggapan p.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 1, 1920, 1080));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/riwayat pengaduan.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

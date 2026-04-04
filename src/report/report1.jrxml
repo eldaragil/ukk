@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4cc40f4b-daff-42a0-aefe-12f60a387f6f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     aspirasi.`id_aspirasi` AS aspirasi_id_aspirasi,
+     aspirasi.`nik` AS aspirasi_nik,
+     aspirasi.`nama` AS aspirasi_nama,
+     aspirasi.`isi_aspirasi` AS aspirasi_isi_aspirasi,
+     aspirasi.`kategori` AS aspirasi_kategori,
+     aspirasi.`status` AS aspirasi_status,
+     aspirasi.`tanggal` AS aspirasi_tanggal,
+     aspirasi.`tanggal_tang` AS aspirasi_tanggal_tang
+FROM
+     `aspirasi` aspirasi]]>
+	</queryString>
+	<field name="aspirasi_id_aspirasi" class="java.lang.Integer"/>
+	<field name="aspirasi_nik" class="java.lang.String"/>
+	<field name="aspirasi_nama" class="java.lang.String"/>
+	<field name="aspirasi_isi_aspirasi" class="java.lang.String"/>
+	<field name="aspirasi_kategori" class="java.lang.String"/>
+	<field name="aspirasi_status" class="java.lang.String"/>
+	<field name="aspirasi_tanggal" class="java.sql.Date"/>
+	<field name="aspirasi_tanggal_tang" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="146" y="38" width="352" height="14" uuid="a3453ec3-b32b-4b3e-bdcc-7f94746583b0"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEKOLAH MENENGAH KEJURUAN NEGERI 4 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="10" width="477" height="28" uuid="68323c09-eb71-4edd-b72c-52d6180543ff"/>
+				<textElement>
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DINAS PENDIDIKAN KABUPATEN BOJONEGORO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="58" width="492" height="21" uuid="ec376171-5d83-4536-a40b-014a68624b66"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Surabaya, Sukowati, Kec. Kapas, Kabupaten Bojonegoro, Jawa Timur 62181
+Telepon: (0353) 892418]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="32" height="20" uuid="780d9177-5bb0-4e60-bc28-7ba79542d4b3"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_id_aspirasi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="0" width="77" height="20" uuid="d54638bf-d950-425e-a5db-3bbe4817bce9"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_nik}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="0" width="55" height="20" uuid="d236eb07-b9a5-4c32-93b1-f301836071fd"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="0" width="100" height="20" uuid="786087f3-6b1c-4e5b-aba3-22f4fcba9225"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_isi_aspirasi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="0" width="65" height="20" uuid="4c9bef87-fce8-4349-8f0c-2f07680cd347"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_kategori}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="0" width="52" height="20" uuid="c86592e6-ce04-46d9-bf3f-1f5d658a0bc0"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="0" width="74" height="20" uuid="efeb3e86-3ed9-4a6e-86d4-28d689956955"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="ae8dc8df-f0ff-4c06-aed1-b3fb9ef6eb47"/>
+				<textFieldExpression><![CDATA[$F{aspirasi_tanggal_tang}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

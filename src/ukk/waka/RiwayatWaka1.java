@@ -111,9 +111,10 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
         btn_cetak_all = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -130,7 +131,7 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_riwayat);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 1620, 570));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 1260, 340));
 
         txt_cari_nama.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari_nama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -140,19 +141,19 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
                 txt_cari_namaKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_cari_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 750, 50));
+        jPanel1.add(txt_cari_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 990, 50));
 
         cb_kategori.setBackground(new java.awt.Color(0,0,0,0));
         cb_kategori.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nama", "Kategori" }));
         cb_kategori.setBorder(null);
-        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 190, 230, 30));
+        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 180, 60));
 
         tgl_dari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(tgl_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 280, 30));
+        jPanel1.add(tgl_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 270, 40));
 
         tgl_sampai.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(tgl_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 260, 30));
+        jPanel1.add(tgl_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 290, 40));
 
         btn_filter.setBackground(new java.awt.Color(0,0,0,0));
         btn_filter.setBorder(null);
@@ -161,10 +162,10 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
                 btn_filterActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 240, 140, 50));
+        jPanel1.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 190, 140, 60));
 
         lbl_total.setText("TOTAL DATA :");
-        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 960, -1, -1));
+        jPanel1.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, -1, -1));
 
         btn_detail.setBackground(new java.awt.Color(0,0,0,0));
         btn_detail.setBorder(null);
@@ -173,25 +174,23 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
                 btn_detailActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 950, 110, 40));
+        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 650, 130, 50));
 
-        btn_cetak_filter.setBackground(new java.awt.Color(0,0,0,0));
         btn_cetak_filter.setBorder(null);
         btn_cetak_filter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cetak_filterActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cetak_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 950, 120, 40));
+        jPanel1.add(btn_cetak_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, 150, 50));
 
-        btn_cetak_all.setBackground(new java.awt.Color(0,0,0,0));
         btn_cetak_all.setBorder(null);
         btn_cetak_all.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cetak_allActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cetak_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 950, 120, 40));
+        jPanel1.add(btn_cetak_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 650, 160, 50));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -200,7 +199,7 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 950, 110, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 650, 160, 50));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -209,21 +208,12 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 950, 110, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 650, 110, 50));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/riwayat waka.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ukk/waka/Riwayat waka.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -302,13 +292,15 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
         parameter.put("tgl_akhir", sdf.format(tgl_sampai.getDate()));
 
         // Lokasi file pastikan huruf besar kecilnya sama dengan di folder project
-        java.io.File reportFile = new java.io.File("src/report/laporan_riwayat.jasper");
+        JasperReport jasperReport = JasperCompileManager.compileReport("report/LAPENGALL.jrxml");
         
         // PERBAIKAN: Menggunakan ukk.koneksiDB.getKoneksi()
         java.sql.Connection conn = Koneksi.Koneksi.KoneksiDB();
         
-        JasperPrint jp = JasperFillManager.fillReport(reportFile.getPath(), parameter, conn);
-        JasperViewer.viewReport(jp, false);
+
+JasperPrint jp = JasperFillManager.fillReport(jasperReport, parameter, conn);
+JasperViewer.viewReport(jp, false);
+        
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Cetak Gagal: " + e.getMessage());
     }
@@ -418,7 +410,7 @@ public class RiwayatWaka1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_cetak_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetak_allActionPerformed
-        // TODO add your handling code here:                                            
+         // TODO add your handling code here:                                            
      // 1. Pastikan koneksi tidak null
   Connection conn = Koneksi.Koneksi.KoneksiDB(); 
 if (conn == null) {
@@ -460,7 +452,7 @@ try {
     JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
 
     JasperReport jasperReport = JasperCompileManager.compileReport(
-            "D:/buiza/ukk/src/report/LAWAKALL.jrxml");
+            "C:/Users/10/ukk-baruu/src/report/LAWAKALL.jrxml");
 
     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
 
@@ -575,7 +567,7 @@ try {
     private javax.swing.JComboBox<String> cb_kategori;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_total;

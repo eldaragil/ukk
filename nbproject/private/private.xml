@@ -3,33 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/buiza/ukk/src/Koneksi/Koneksi.java</file>
-            <file>file:/D:/buiza/ukk/src/gambar/Register.png</file>
-            <file>file:/D:/buiza/ukk/src/riwayat/RiwayatAspirasi.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/menu/menuWaka.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/admin/TanggapanAdmin.java</file>
-            <file>file:/D:/buiza/ukk/src/riwayat_p/RiwayatTanggapanP.java</file>
-            <file>file:/D:/buiza/ukk/src/riwayat_p/RiwayatAspirasiP.java</file>
-            <file>file:/D:/buiza/ukk/src/riwayat/datapengaduan.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/menu/menuPelapor.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/menulogin.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/login.java</file>
-            <file>file:/D:/buiza/ukk/src/gambar/Login.png</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/loginadmin.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/register.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/admin/Aspirasi1.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/pelapor/Aspirasi_peng.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/session.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/waka/RiwayatWaka1.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/tugas.java</file>
-            <file>file:/D:/buiza/ukk/src/gambar/aspirasi%20tan.png</file>
-            <file>file:/D:/buiza/ukk/src/ukk/admin/registrasiWaka.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/waka/verivikasiwaka.java</file>
-            <file>file:/D:/buiza/ukk/src/riwayat/RiwayatTanggapanAdmin.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/pelapor/pengaduan.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/login_register/splashscreen.java</file>
-            <file>file:/D:/buiza/ukk/src/report/Tanggapan.java</file>
-            <file>file:/D:/buiza/ukk/src/ukk/menu/menuAdmin.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/login_register/register.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/pelapor/pengaduan.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/waka/RiwayatWaka1.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/menu/menuWaka.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/menu/menuPelapor.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/login_register/menulogin.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/riwayat/datapengaduan.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/Koneksi/Koneksi.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/login_register/splashscreen.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/admin/TanggapanAdmin.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/admin/registrasiWaka.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/riwayat/RiwayatAspirasi.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/admin/Aspirasi1.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/riwayat/riwayat%20aspirasi%20(1).png</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/menu/menuAdmin.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/riwayat_p/RiwayatTanggapanP.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/riwayat/RiwayatTanggapanAdmin.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/login_register/login.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/pelapor/Aspirasi_peng.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/login_register/loginadmin.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/riwayat_p/RiwayatAspirasiP.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/waka/verivikasiwaka.java</file>
+            <file>file:/C:/Users/10/ukk-baruu/src/ukk/login_register/splashcreen.png</file>
         </group>
     </open-files>
 </project-private>

@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import Koneksi.Koneksi;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import ukk.menu.menuAdmin;
 import ukk.menu.menuWaka;
 import ukk.session;
@@ -27,21 +25,16 @@ public class login extends javax.swing.JFrame {
 Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-  
 
     public login() {
-         initComponents();
+        initComponents();
+        setLocationRelativeTo(null);
         conn = Koneksi.KoneksiDB();
         this.setLocationRelativeTo(null);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
     
-    private ImageIcon resizeIcon(String path, int width, int height) {
-    ImageIcon icon = new ImageIcon(getClass().getResource(path));
-    Image img = icon.getImage();
-    Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-    return new ImageIcon(newImg);
-}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,14 +46,14 @@ Connection conn = null;
 
         jPanel1 = new javax.swing.JPanel();
         usernameTxt = new javax.swing.JTextField();
+        passwordTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        lblEye = new javax.swing.JLabel();
-        passwordTxt = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -72,7 +65,17 @@ Connection conn = null;
                 usernameTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 470, 670, 70));
+        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 590, 50));
+
+        passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
+        passwordTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        passwordTxt.setBorder(null);
+        passwordTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 590, 50));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -81,7 +84,7 @@ Connection conn = null;
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 720, 360, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 570, 60));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -92,7 +95,7 @@ Connection conn = null;
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 720, 340, 60));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, 110, 40));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
@@ -101,32 +104,15 @@ Connection conn = null;
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1700, 250, 50, 70));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, 110, 40));
 
-        lblEye.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblEyeMouseClicked(evt);
-            }
-        });
-        jPanel1.add(lblEye, new org.netbeans.lib.awtextra.AbsoluteConstraints(1660, 630, 70, 40));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ukk/login_register/login pelaporr.png"))); // NOI18N
+        jLabel3.setMaximumSize(new java.awt.Dimension(1366, 768));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1366, 768));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1366, 768));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 700));
 
-        passwordTxt.setBackground(new java.awt.Color(0,0,0,0));
-        passwordTxt.setBorder(null);
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 620, 670, 70));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/Login Pelapor.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 1365, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,6 +120,10 @@ Connection conn = null;
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTxtActionPerformed
+
+    private void passwordTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTxtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -201,10 +191,6 @@ Connection conn = null;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void lblEyeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEyeMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblEyeMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -244,10 +230,9 @@ Connection conn = null;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblEye;
-    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JTextField passwordTxt;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
 }

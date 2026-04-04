@@ -190,7 +190,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 txt_nikActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 400, 50));
+        jPanel1.add(txt_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 320, 30));
 
         txt_nama.setEditable(false);
         txt_nama.setBackground(new java.awt.Color(0,0,0,0));
@@ -201,7 +201,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 txt_namaActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 400, 50));
+        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 320, 30));
 
         txt_isi.setBackground(new java.awt.Color(0,0,0,0));
         txt_isi.setColumns(20);
@@ -209,7 +209,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
         txt_isi.setBorder(null);
         jScrollPane1.setViewportView(txt_isi);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 400, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 320, 30));
 
         tbAspirasi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -229,7 +229,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbAspirasi);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 270, 1000, 660));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 710, 550));
 
         txt_cari.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -244,7 +244,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 txt_cariKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 180, 720, 40));
+        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 430, 50));
 
         cb_filter.setBackground(new java.awt.Color(0,0,0,0));
         cb_filter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -255,13 +255,13 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 cb_filterActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 180, 110, 40));
+        jPanel1.add(cb_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 30, 150, 50));
 
         txt_id.setEditable(false);
         txt_id.setBackground(new java.awt.Color(0,0,0,0));
         txt_id.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_id.setBorder(null);
-        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 410, 50));
+        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 320, 30));
 
         btn_refresh.setBackground(new java.awt.Color(0,0,0,0));
         btn_refresh.setBorder(null);
@@ -270,10 +270,10 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 btn_refreshActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 790, 70, 40));
+        jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 650, 150, 50));
 
         txt_tanggal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel1.add(txt_tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 400, 40));
+        jPanel1.add(txt_tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 320, 40));
 
         btn_simpan.setBackground(new java.awt.Color(0,0,0,0));
         btn_simpan.setBorder(null);
@@ -282,7 +282,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 btn_simpanActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 790, 80, 40));
+        jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 650, 160, 60));
 
         btn_hapus.setBackground(new java.awt.Color(0,0,0,0));
         btn_hapus.setBorder(null);
@@ -291,7 +291,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 btn_hapusActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 790, 80, 40));
+        jPanel1.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 650, 110, 50));
 
         cb_kategori.setBackground(new java.awt.Color(0,0,0,0));
         cb_kategori.setEditable(true);
@@ -304,20 +304,21 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 cb_kategoriActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 400, 50));
+        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 320, 30));
 
         cb_statusfil.setBackground(new java.awt.Color(0,0,0,0));
         cb_statusfil.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cb_statusfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hardware PC Lab", "Software & Library", "Jaringan & Internet", "Sarana Ruang Praktik", "Kelistrikan & Kabel" }));
+        cb_statusfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "terimakasih", "diterapkan" }));
         cb_statusfil.setBorder(null);
         cb_statusfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_statusfilActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_statusfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1700, 180, 150, 40));
+        jPanel1.add(cb_statusfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 30, 110, 50));
 
-        jButton1.setBackground(new java.awt.Color(0,0,0,0));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Cek");
         jButton1.setBorder(null);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -329,7 +330,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, 110, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 70, 30));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -338,7 +339,7 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 790, 80, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 650, 130, 50));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
@@ -347,10 +348,10 @@ public class Aspirasi_peng extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 790, 90, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 650, 150, 50));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pelapor aspirasi.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1080));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/from aspirasi.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

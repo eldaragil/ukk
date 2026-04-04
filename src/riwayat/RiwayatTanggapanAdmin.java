@@ -99,14 +99,15 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 270, 40));
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 260, 40));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 270, 40));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 90, 260, 40));
 
         tabel_pengaduan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,7 +127,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_pengaduan);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 320, 1580, 570));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 1290, 480));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
@@ -135,7 +136,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 950, 120, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, 160, 50));
 
         jButton4.setBackground(new java.awt.Color(0,0,0,0));
         jButton4.setBorder(null);
@@ -144,7 +145,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 950, 120, 40));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 630, 190, 50));
 
         jButton5.setBackground(new java.awt.Color(0,0,0,0));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +153,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 950, 120, 40));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 630, 210, 50));
 
         jButton6.setBackground(new java.awt.Color(0,0,0,0));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +161,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 950, 120, 40));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 640, 140, 50));
 
         jButton7.setBackground(new java.awt.Color(0,0,0,0));
         jButton7.setBorder(null);
@@ -169,7 +170,7 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 950, 110, 40));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 630, 100, 60));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -178,21 +179,12 @@ public class RiwayatTanggapanAdmin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 190, 150, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 90, 140, 40));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/riwayat tanggapan (1).png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/riwayat/riwayat tanggapan.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 2010, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -371,7 +363,7 @@ try {
     JRResultSetDataSource jrRS = new JRResultSetDataSource(rp);
 
     JasperReport jasperReport = JasperCompileManager.compileReport(
-            "D:/buiza/ukk/src/report/LAPENGALL.jrxml"
+            "C:/Users/10/ukk-baruu/src/report/LAPENGALL.jrxml"
     );
 
     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrRS);
@@ -460,7 +452,7 @@ try {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-                                           
+                                            
     try {
 
         // 1️⃣ Cek tanggal
@@ -591,7 +583,7 @@ try {
     private javax.swing.JButton jButton7;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabel_pengaduan;

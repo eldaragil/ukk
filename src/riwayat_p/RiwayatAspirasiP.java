@@ -114,7 +114,7 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
         btn_detail = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,7 +133,7 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_riwayat);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 1620, 580));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1280, 520));
 
         txt_cari_nama.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari_nama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -148,15 +148,15 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
                 txt_cari_namaKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_cari_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 750, 50));
+        jPanel1.add(txt_cari_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 540, 30));
 
         cb_kategori.setBackground(new java.awt.Color(0,0,0,0));
         cb_kategori.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nama", "isi aspirasi" }));
         cb_kategori.setBorder(null);
-        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 180, 230, 50));
-        jPanel1.add(tgl_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 280, 30));
-        jPanel1.add(tgl_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 250, 260, 30));
+        jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 60, 150, 30));
+        jPanel1.add(tgl_dari, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 180, 30));
+        jPanel1.add(tgl_sampai, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 90, 180, 30));
 
         btn_filter.setBackground(new java.awt.Color(0,0,0,0));
         btn_filter.setBorder(null);
@@ -165,7 +165,7 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
                 btn_filterActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 240, 150, 40));
+        jPanel1.add(btn_filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 90, 90, 30));
 
         btn_detail.setBackground(new java.awt.Color(0,0,0,0));
         btn_detail.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +173,7 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
                 btn_detailActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 950, 120, 40));
+        jPanel1.add(btn_detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, 120, 40));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -182,7 +182,7 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 950, 120, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, 150, 40));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -191,21 +191,20 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 950, 120, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 660, 110, 40));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/riwayat aspirasi ptgs.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -2, 1930, 1080));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/riwayat_p/riwayat aspirasi.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1368, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -412,7 +411,7 @@ public class RiwayatAspirasiP extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_kategori;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb_riwayat;

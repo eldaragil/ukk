@@ -145,7 +145,8 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         btn_cari = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabel_pengaduan = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabel_feedback = new javax.swing.JTable();
         txt_id = new javax.swing.JTextField();
         btn_refrest = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -153,8 +154,6 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_tanggapan = new javax.swing.JTextArea();
         detail = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tabel_feedback = new javax.swing.JTable();
         lbl_foto = new javax.swing.JLabel();
         txt_tglpengaduan = new com.toedter.calendar.JDateChooser();
         cb_kategori = new javax.swing.JComboBox<>();
@@ -162,7 +161,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         txt_id_petugas = new javax.swing.JTextField();
         btn_cek_petugas = new javax.swing.JButton();
         txt_nama_petugas = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,7 +169,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         txt_NIK.setBackground(new java.awt.Color(0,0,0,0));
         txt_NIK.setBorder(null);
         txt_NIK.setEnabled(false);
-        getContentPane().add(txt_NIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 390, 40));
+        getContentPane().add(txt_NIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 360, 30));
 
         txt_nama.setBackground(new java.awt.Color(0,0,0,0));
         txt_nama.setBorder(null);
@@ -180,10 +179,10 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 txt_namaActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 390, 30));
+        getContentPane().add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 360, 30));
 
         txt_tgl.setEnabled(false);
-        getContentPane().add(txt_tgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 390, 40));
+        getContentPane().add(txt_tgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 360, 30));
 
         cmb_status.setBackground(new java.awt.Color(0,0,0,0));
         cmb_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "terverifikasi", "tertanggapi" }));
@@ -193,7 +192,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 cmb_statusActionPerformed(evt);
             }
         });
-        getContentPane().add(cmb_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 620, 390, 40));
+        getContentPane().add(cmb_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 360, 30));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -202,7 +201,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 950, 70, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 640, 140, 50));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
@@ -211,7 +210,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 950, 80, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 640, 110, 50));
 
         txt_cari.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari.setBorder(null);
@@ -220,11 +219,11 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 txt_cariActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, 710, 40));
+        getContentPane().add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 410, 40));
 
         cmb_kategori.setBackground(new java.awt.Color(0,0,0,0));
         cmb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NIK", "Nama" }));
-        getContentPane().add(cmb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1610, 40, 140, 40));
+        getContentPane().add(cmb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 70, 110, 40));
 
         btn_cari.setBackground(new java.awt.Color(0,0,0,0));
         btn_cari.setBorder(null);
@@ -233,7 +232,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 btn_cariActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 40, 110, 50));
+        getContentPane().add(btn_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 70, 130, 40));
 
         tabel_pengaduan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,50 +260,7 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_pengaduan);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 160, 940, 360));
-
-        jLabel3.setText("NIK");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 107, -1, -1));
-
-        txt_id.setBackground(new java.awt.Color(0,0,0,0));
-        txt_id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_id.setBorder(null);
-        txt_id.setEnabled(false);
-        getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 390, 40));
-
-        btn_refrest.setBackground(new java.awt.Color(0,0,0,0));
-        btn_refrest.setBorder(null);
-        btn_refrest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_refrestActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_refrest, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 950, 70, 30));
-
-        txt_pengaduan.setBackground(new java.awt.Color(0,0,0,0));
-        txt_pengaduan.setColumns(20);
-        txt_pengaduan.setRows(5);
-        txt_pengaduan.setEnabled(false);
-        jScrollPane2.setViewportView(txt_pengaduan);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 390, 100));
-
-        txt_tanggapan.setBackground(new java.awt.Color(0,0,0,0));
-        txt_tanggapan.setColumns(20);
-        txt_tanggapan.setRows(5);
-        txt_tanggapan.setBorder(null);
-        jScrollPane3.setViewportView(txt_tanggapan);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 680, 380, 110));
-
-        detail.setBackground(new java.awt.Color(0,0,0,0));
-        detail.setBorder(null);
-        detail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detailActionPerformed(evt);
-            }
-        });
-        getContentPane().add(detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 950, 70, 40));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 710, 140));
 
         tabel_feedback.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -314,11 +270,11 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NIK/NISN", "Nama", "Tanggal", "Feedback", "Status"
+                "ID", "NK/NISN", "Nama", "Tanggal", "Feedback", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -332,16 +288,56 @@ public class TanggapanAdmin extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tabel_feedback);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 580, 940, 340));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 700, 140));
+
+        txt_id.setBackground(new java.awt.Color(0,0,0,0));
+        txt_id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_id.setBorder(null);
+        txt_id.setEnabled(false);
+        getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 360, 30));
+
+        btn_refrest.setBackground(new java.awt.Color(0,0,0,0));
+        btn_refrest.setBorder(null);
+        btn_refrest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_refrestActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_refrest, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 640, 140, 50));
+
+        txt_pengaduan.setBackground(new java.awt.Color(0,0,0,0));
+        txt_pengaduan.setColumns(20);
+        txt_pengaduan.setRows(5);
+        txt_pengaduan.setEnabled(false);
+        jScrollPane2.setViewportView(txt_pengaduan);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 360, 60));
+
+        txt_tanggapan.setBackground(new java.awt.Color(0,0,0,0));
+        txt_tanggapan.setColumns(20);
+        txt_tanggapan.setRows(5);
+        txt_tanggapan.setBorder(null);
+        jScrollPane3.setViewportView(txt_tanggapan);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 360, 60));
+
+        detail.setBackground(new java.awt.Color(0,0,0,0));
+        detail.setBorder(null);
+        detail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(detail, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 640, 140, 50));
 
         lbl_foto.setBackground(new java.awt.Color(0,0,0,0));
-        getContentPane().add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 810, 90, 130));
-        getContentPane().add(txt_tglpengaduan, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 390, 40));
+        getContentPane().add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 140, 180));
+        getContentPane().add(txt_tglpengaduan, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 360, 30));
 
         cb_kategori.setBackground(new java.awt.Color(0,0,0,0));
         cb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sarana", "prasarana" }));
         cb_kategori.setBorder(null);
-        getContentPane().add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, 390, 30));
+        getContentPane().add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 360, 30));
 
         lokasi.setBackground(new java.awt.Color(0,0,0,0));
         lokasi.setBorder(null);
@@ -350,11 +346,11 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 lokasiActionPerformed(evt);
             }
         });
-        getContentPane().add(lokasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 390, 30));
+        getContentPane().add(lokasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 360, 30));
 
         txt_id_petugas.setBackground(new java.awt.Color(0,0,0,0));
         txt_id_petugas.setBorder(null);
-        getContentPane().add(txt_id_petugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 380, 40));
+        getContentPane().add(txt_id_petugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 360, 30));
 
         btn_cek_petugas.setBackground(new java.awt.Color(0,0,0,0));
         btn_cek_petugas.setBorder(null);
@@ -363,14 +359,14 @@ public class TanggapanAdmin extends javax.swing.JFrame {
                 btn_cek_petugasActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cek_petugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 70, 40));
+        getContentPane().add(btn_cek_petugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 40, 30));
 
         txt_nama_petugas.setBackground(new java.awt.Color(0,0,0,0));
         txt_nama_petugas.setEnabled(false);
-        getContentPane().add(txt_nama_petugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 380, 40));
+        getContentPane().add(txt_nama_petugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 360, 30));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar_new/PELAPOR PENGADUAN (1).png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ukk/admin/tanggapan pengaduan (1).png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -802,8 +798,33 @@ if (txt_id.getText().isEmpty() || txt_NIK.getText().isEmpty() ||
             // TODO add your handling code here:
     }//GEN-LAST:event_detailActionPerformed
 
+    private void lokasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lokasiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lokasiActionPerformed
+
+    private void btn_cek_petugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cek_petugasActionPerformed
+    try {
+        String sql = "SELECT username FROM petugas WHERE id_petugas = ?";
+        pst = conn.prepareStatement(sql);
+        pst.setString(1, txt_id_petugas.getText());
+        rs = pst.executeQuery();
+        
+        if (rs.next()) {
+            // Jika ID ketemu, tampilkan namanya di field kedua
+            txt_nama_petugas.setText(rs.getString("username"));
+        } else {
+            // Jika tidak ada, kosongkan dan beri peringatan
+            txt_nama_petugas.setText("");
+            JOptionPane.showMessageDialog(null, "ID Petugas tidak ditemukan!");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal mengecek petugas: " + e.getMessage());
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cek_petugasActionPerformed
+
     private void tabel_feedbackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_feedbackMouseClicked
-    tabel_pengaduan.clearSelection();
+        tabel_pengaduan.clearSelection();
     int baris = tabel_pengaduan.getSelectedRow();
     if (baris == -1) return; // kalau belum pilih baris
 
@@ -871,34 +892,8 @@ if (txt_id.getText().isEmpty() || txt_NIK.getText().isEmpty() ||
         JOptionPane.showMessageDialog(null,
             "Gagal mengambil data tabel: " + e.getMessage());
     }
-
         // TODO add your handling code here:
     }//GEN-LAST:event_tabel_feedbackMouseClicked
-
-    private void lokasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lokasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lokasiActionPerformed
-
-    private void btn_cek_petugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cek_petugasActionPerformed
-    try {
-        String sql = "SELECT username FROM petugas WHERE id_petugas = ?";
-        pst = conn.prepareStatement(sql);
-        pst.setString(1, txt_id_petugas.getText());
-        rs = pst.executeQuery();
-        
-        if (rs.next()) {
-            // Jika ID ketemu, tampilkan namanya di field kedua
-            txt_nama_petugas.setText(rs.getString("username"));
-        } else {
-            // Jika tidak ada, kosongkan dan beri peringatan
-            txt_nama_petugas.setText("");
-            JOptionPane.showMessageDialog(null, "ID Petugas tidak ditemukan!");
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Gagal mengecek petugas: " + e.getMessage());
-    }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_cek_petugasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -945,8 +940,7 @@ if (txt_id.getText().isEmpty() || txt_NIK.getText().isEmpty() ||
     private javax.swing.JButton detail;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

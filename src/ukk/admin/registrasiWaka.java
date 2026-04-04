@@ -141,12 +141,17 @@ void getData() {
         txt_username.setBackground(new java.awt.Color(0,0,0,0));
         txt_username.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_username.setBorder(null);
-        jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 390, 50));
+        jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 410, 40));
 
         txt_password.setBackground(new java.awt.Color(0,0,0,0));
         txt_password.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_password.setBorder(null);
-        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 390, 50));
+        txt_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_passwordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 410, 40));
 
         txt_cari.setBackground(new java.awt.Color(0,0,0,0));
         txt_cari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -156,7 +161,7 @@ void getData() {
                 txt_cariActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, 700, 50));
+        jPanel1.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 460, 50));
 
         cmb_cari.setBackground(new java.awt.Color(0,0,0,0));
         cmb_cari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NAMA" }));
@@ -166,7 +171,7 @@ void getData() {
                 cmb_cariActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 220, 120, 50));
+        jPanel1.add(cmb_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 50, 130, 50));
 
         jButton6.setBackground(new java.awt.Color(0,0,0,0));
         jButton6.setBorder(null);
@@ -180,7 +185,7 @@ void getData() {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1730, 220, 130, 50));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 50, 110, 50));
 
         jButton4.setBackground(new java.awt.Color(0,0,0,0));
         jButton4.setBorder(null);
@@ -189,7 +194,7 @@ void getData() {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 680, 90, 40));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, 130, 40));
 
         jButton1.setBackground(new java.awt.Color(0,0,0,0));
         jButton1.setBorder(null);
@@ -198,7 +203,7 @@ void getData() {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 680, 80, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 640, 160, 50));
 
         jButton2.setBackground(new java.awt.Color(0,0,0,0));
         jButton2.setBorder(null);
@@ -207,7 +212,7 @@ void getData() {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 680, 80, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 650, 150, 40));
 
         jButton5.setBackground(new java.awt.Color(0,0,0,0));
         jButton5.setBorder(null);
@@ -216,7 +221,7 @@ void getData() {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 680, 90, 40));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 650, 120, 40));
 
         jButton3.setBackground(new java.awt.Color(0,0,0,0));
         jButton3.setBorder(null);
@@ -225,7 +230,7 @@ void getData() {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 680, 80, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 640, 150, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -245,13 +250,13 @@ void getData() {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 320, 1010, 650));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 730, 520));
 
         cmb_role.setBackground(new java.awt.Color(0,0,0,0));
         cmb_role.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "waka" }));
         cmb_role.setBorder(null);
-        jPanel1.add(cmb_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 590, 390, 50));
+        jPanel1.add(cmb_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 400, 40));
 
         txt_id.setEditable(false);
         txt_id.setBackground(new java.awt.Color(0,0,0,0));
@@ -262,24 +267,24 @@ void getData() {
                 txt_idActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 390, 50));
+        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 400, 40));
 
         txt_nama.setBackground(new java.awt.Color(0,0,0,0));
         txt_nama.setBorder(null);
-        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 390, 50));
+        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 400, 40));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/regis adm.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/registrasi waka.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1365, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -466,6 +471,10 @@ if (p == JOptionPane.YES_OPTION) {
     private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_idActionPerformed
+
+    private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_passwordActionPerformed
 
     /**
      * @param args the command line arguments
