@@ -563,7 +563,7 @@ public class pengaduan extends javax.swing.JFrame {
         int i = jTable1.getSelectedRow(); // Mendapatkan baris yang dipilih
         TableModel model = jTable1.getModel();
 
-        ///txt_pengaduan.setText(model.getValueAt(i, 0).toString());
+        txt_pengaduan.setText(model.getValueAt(i, 0).toString());
         txt_nik.setText(model.getValueAt(i, 1).toString());
         txt_nama.setText(model.getValueAt(i, 2).toString());
         txt_isi.setText(model.getValueAt(i, 4).toString());
@@ -643,36 +643,53 @@ bersih();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-//            bersih();
+        bersih();
         refreshSemua();
+        tampilIdPengaduan();
         getData();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String tampilan = "yyyy-MM-dd";
+       String tampilan = "yyyy-MM-dd";
         SimpleDateFormat fm = new SimpleDateFormat(tampilan);
-        String tanggal = fm.format(jd_tglpengaduan.getDate());
 
-        try {
-            String id_pengaduan = txt_pengaduan.getText(); // field ID
-            String nik = txt_nik.getText();
-            String isi = txt_isi.getText();
-
-            String sql = "UPDATE pengaduan SET nik=?, tgl_pengaduan=?, isi_laporan=? WHERE id_pengaduan=?";
-            pst = conn.prepareStatement(sql);
-
-            pst.setString(1, nik);
-            pst.setString(2, tanggal);
-            pst.setString(3, isi);
-            pst.setString(4, id_pengaduan);
-
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "UPDATE SUKSES");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        if (jd_tglpengaduan.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Tanggal belum dipilih!");
+            return;
         }
 
+        String tanggal = fm.format(jd_tglpengaduan.getDate());
+
+try {
+    String id_pengaduan = txt_pengaduan.getText();
+    String nik = txt_nik.getText();
+    String isi = txt_isi.getText();
+
+    // DEBUG (biar ketahuan nilainya)
+    System.out.println("ID: " + id_pengaduan);
+
+    String sql = "UPDATE pengaduan SET nik=?, tgl_pengaduan=?, isi_laporan=? WHERE id_pengaduan=?";
+    pst = conn.prepareStatement(sql);
+
+    pst.setString(1, nik);
+    pst.setString(2, tanggal);
+    pst.setString(3, isi);
+    pst.setInt(4, Integer.parseInt(id_pengaduan)); // WAJIB int kalau di DB int
+
+    int rows = pst.executeUpdate();
+
+    System.out.println("Baris terupdate: " + rows);
+
+    if (rows > 0) {
+        JOptionPane.showMessageDialog(null, "UPDATE SUKSES");
+    } else {
+        JOptionPane.showMessageDialog(null, "ID TIDAK DITEMUKAN / TIDAK ADA PERUBAHAN");
+    }
+
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, e);
+}
         getData();
         bersih();
 
